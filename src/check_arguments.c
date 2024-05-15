@@ -6,7 +6,7 @@
 /*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 15:35:03 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/05/06 13:20:22 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/05/15 17:33:38 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	check_digit(char *str)
 	int		j;
 	char	**split;
 
+	if (str == NULL)
+		return (EXIT_FAILURE);
 	i = 0;
 	split = ft_split(str, ',');
 	while (split[i] != NULL)
@@ -43,6 +45,8 @@ int	check_colors(char *str, int flag)
 	int		i;
 
 	split = NULL;
+	if (str == NULL)
+		return (EXIT_FAILURE);
 	i = -1;
 	while (str[++i] != '\0')
 		if (str[i] == ',')
