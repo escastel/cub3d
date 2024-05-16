@@ -6,7 +6,7 @@
 /*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 14:36:34 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/05/16 14:26:54 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/05/16 15:16:03 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,6 @@ int	main(int argc, char **argv)
 		return (free_all(data), EXIT_FAILURE);
 	if (check_map(data) == 1)
 		return (free_all(data), EXIT_FAILURE);
-	int	i = 0;
-	while (data->map[i] != NULL)
-	{
-		ft_printf("%s\n", data->map[i]);
-		i++;
-	}
 	free_all(data);
 	return (EXIT_SUCCESS);
 }

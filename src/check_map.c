@@ -6,7 +6,7 @@
 /*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 18:06:26 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/05/06 12:58:57 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/05/16 15:14:20 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ static int	check_walls(t_data *data, int i, int j)
 	if (((i == 0 || i == data->high_map) || (j == 0 || j == data->width_map))
 		&& data->map[i][j] != '1' && data->map[i][j] != ' ')
 		return (print_error("unclosed map"));
-	if (i != 0 && i != data->high_map && ((data->map[i][j] == '0' \
+	else if (i != 0 && i != data->high_map && ((data->map[i][j] == '0' \
 		|| data->map[i][j] == 'N' || data->map[i][j] == 'W'
 		|| data->map[i][j] == 'S' || data->map[i][j] == 'E')
 		&& (data->map[i + 1][j] == ' ' || data->map[i - 1][j] == ' '
 		|| data->map[i][j + 1] == ' ' || data->map[i][j - 1] == ' ')))
-		return (print_error("empty space inside the map"));
+		return (print_error("space inside the map"));
 	return (EXIT_SUCCESS);
 }
 
