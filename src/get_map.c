@@ -6,7 +6,7 @@
 /*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 18:12:27 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/05/16 15:59:45 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/05/16 16:21:46 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,20 @@ static int	read_map(t_data *data, int fd, char *line, char *full_map)
 {
 	while (line != NULL)
 	{
-		full_map = ft_strjoin_gnl (full_map, line);
+		if (line[0] == '\n')
+		{
+			if (full_map != NULL)
+				free(full_map);
+			return (free(line), print_error("invalid map"));
+		}
+		full_map = ft_strjoin_gnl(full_map, line);
 		if (!full_map)
 			return (EXIT_FAILURE);
 		free(line);
 		line = get_next_line(fd);
 	}
 	close(fd);
-	if (full_map)
+	if (full_map != NULL)
 	{
 		data->map = ft_split(full_map, '\n');
 		if (!data->map)
@@ -91,10 +97,7 @@ static int	read_file(t_data *data, int fd, char **texture, char *line)
 		line = get_next_line(fd);
 	}
 	if (read_map(data, fd, line, NULL) == 1)
-	{
-		free(line);
 		return (EXIT_FAILURE);
-	}
 	return (EXIT_SUCCESS);
 }
 
