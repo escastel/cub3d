@@ -6,7 +6,7 @@
 /*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 18:12:27 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/05/16 13:05:46 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/05/16 14:06:31 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,6 @@ static int	read_map(t_data *data, int fd, char *line, char *full_map)
 
 static int	read_file(t_data *data, int fd, char **texture, char *line)
 {
-	if (line == NULL)
-		return (print_error("empty file"));
 	while (line && line[0] != ' ' && line[0] != '1')
 	{
 		if (((!ft_strncmp(line, "NO", 2) || !ft_strncmp(line, "SO", 2) \
@@ -79,6 +77,11 @@ static int	read_file(t_data *data, int fd, char **texture, char *line)
 			*texture = ft_strjoin_gnl(*texture, line);
 			data->nbr_text++;
 		}
+		else if (line[0] != '\n')
+		{
+			free(line);
+			return (print_error("invalid element in texture"));
+		}
 		free(line);
 		line = get_next_line(fd);
 	}
@@ -87,27 +90,30 @@ static int	read_file(t_data *data, int fd, char **texture, char *line)
 		free(line);
 		return (EXIT_FAILURE);
 	}
-	if (data->nbr_text != 6)
-		return (print_error("nbr_text incorrect"));
 	return (EXIT_SUCCESS);
 }
 
-int	get_map(t_data *data, char *str)
+int	get_map(t_data *data, char *str, char *line)
 {
 	int		fd;
 	char	*texture;
-	char	*line;
 
 	fd = open(str, O_RDONLY);
 	line = get_next_line(fd);
+	if (line == NULL)
+		return (print_error("empty file"));
 	texture = NULL;
 	if (fd == -1)
 		return (print_error("can't open file"));
 	if (read_file(data, fd, &texture, line) == 1)
 	{
-		if (texture != NULL)
-			free(texture);
+		free(texture);
 		return (EXIT_FAILURE);
+	}
+	if (data->nbr_text != 6)
+	{
+		free(texture);
+		return (print_error("nbr_text incorrect"));
 	}
 	if (get_texture(data, texture, -1, NULL) == 1)
 		return (EXIT_FAILURE);

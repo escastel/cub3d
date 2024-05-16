@@ -6,7 +6,7 @@
 /*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 14:36:34 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/05/16 12:27:09 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/05/16 14:06:43 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	main(int argc, char **argv)
 		return (print_error("incorrect argument"));
 	data = ft_calloc(1, sizeof(t_data));
 	init_struct(data);
-	if (get_map(data, argv[1]) == 1)
+	if (get_map(data, argv[1], NULL) == 1)
 		return (free_all(data), EXIT_FAILURE);
 	if (check_map(data) == 1)
 		return (free_all(data), EXIT_FAILURE);

@@ -6,7 +6,7 @@
 /*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 15:35:03 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/05/16 12:43:42 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/05/16 13:12:13 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,14 @@ int	check_digit(char *str)
 	split = ft_split(str, ',');
 	while (split[i] != NULL)
 	{
-		j = 0;
-		while (split[i][j] != '\0')
+		j = -1;
+		while (split[i][++j] != '\0')
 		{
 			if (ft_isdigit(split[i][j]) == EXIT_FAILURE)
+			{
+				free_split(split);
 				return (EXIT_FAILURE);
-			j++;
+			}
 		}
 		i++;
 	}
