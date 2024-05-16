@@ -6,7 +6,7 @@
 /*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 18:12:27 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/05/16 16:21:46 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/05/16 16:31:02 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,18 @@ static int	get_texture(t_data *data, char *line, int i, char **split)
 		|| data->ea == NULL || data->f == NULL || data->c == NULL)
 		|| (data->no[1] == NULL || data->so[1] == NULL || data->we[1] == NULL \
 		|| data->ea[1] == NULL || data->f[1] == NULL || data->c[1] == NULL))
-		return (free_split(split), free(line),
-			print_error("can't get textures"));
+	{
+		free_split(split);
+		free(line);
+		return (print_error("can't get textures"));
+	}
 	if (check_colors(data->c[1], 0) == 1 || check_colors(data->f[1], 0) == 1
 		|| check_digit(data->c[1]) == 1 || check_digit(data->f[1]) == 1)
-		return (free_split(split), free(line),
-			print_error("incorrect color argument"));
+	{
+		free_split(split);
+		free(line);
+		return (print_error("incorrect color argument"));
+	}
 	return (free_split(split), free(line), EXIT_SUCCESS);
 }
 
