@@ -6,7 +6,7 @@
 /*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 18:12:27 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/05/16 12:41:16 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/05/16 13:05:46 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ static int	get_texture(t_data *data, char *line, int i, char **split)
 		else if (!ft_strncmp(split[i], "C", 1) && data->c == NULL)
 			data->c = ft_split(split[i], ' ');
 	}
-	if (data->no == NULL || data->so == NULL || data->we == NULL
-		|| data->ea == NULL || data->f == NULL || data->c == NULL)
+	if (data->no[1] == NULL || data->so[1] == NULL || data->we[1] == NULL
+		|| data->ea[1] == NULL || data->f[1] == NULL || data->c[1] == NULL)
 		return (free_split(split), free(line),
 			print_error("can't get textures"));
 	if (check_colors(data->c[1], 0) == 1 || check_colors(data->f[1], 0) == 1
@@ -45,11 +45,6 @@ static int	read_map(t_data *data, int fd, char *line, char *full_map)
 {
 	while (line != NULL)
 	{
-		if (line[0] == '\n')
-		{
-			free(line);
-			return (print_error("invalid map"));
-		}
 		full_map = ft_strjoin_gnl (full_map, line);
 		if (!full_map)
 			return (EXIT_FAILURE);
@@ -65,12 +60,14 @@ static int	read_map(t_data *data, int fd, char *line, char *full_map)
 	}
 	free(full_map);
 	if (data->map == NULL)
-		return (print_error("empty file"));
+		return (print_error("empty map"));
 	return (EXIT_SUCCESS);
 }
 
 static int	read_file(t_data *data, int fd, char **texture, char *line)
 {
+	if (line == NULL)
+		return (print_error("empty file"));
 	while (line && line[0] != ' ' && line[0] != '1')
 	{
 		if (((!ft_strncmp(line, "NO", 2) || !ft_strncmp(line, "SO", 2) \
@@ -91,10 +88,7 @@ static int	read_file(t_data *data, int fd, char **texture, char *line)
 		return (EXIT_FAILURE);
 	}
 	if (data->nbr_text != 6)
-	{
-		free(line);
 		return (print_error("nbr_text incorrect"));
-	}
 	return (EXIT_SUCCESS);
 }
 

@@ -6,7 +6,7 @@
 /*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 15:35:03 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/05/15 17:33:38 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/05/16 12:43:42 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,6 @@ int	check_colors(char *str, int flag)
 	int		i;
 
 	split = NULL;
-	if (str == NULL)
-		return (EXIT_FAILURE);
 	i = -1;
 	while (str[++i] != '\0')
 		if (str[i] == ',')
