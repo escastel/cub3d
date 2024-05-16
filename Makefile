@@ -15,8 +15,8 @@ LIB_SYS = -lm -Iinclude -lglfw -L "/Users/ncruz-ga/.brew/opt/glfw/lib/"
 SRC = src/main.c\
 		src/get_map.c\
 		src/cub3D_utils.c\
-		src/check_map.c\
-		src/check_arguments.c\
+		src/parser/check_map.c\
+		src/parser/check_arguments.c\
 
 OBJ = $(SRC:.c=.o)
 
