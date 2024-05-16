@@ -6,11 +6,11 @@
 /*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 15:35:03 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/05/16 13:12:13 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/05/16 16:35:21 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../cub3D.h"
 
 int	check_digit(char *str)
 {

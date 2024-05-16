@@ -10,7 +10,7 @@ LIB_NAME = cub3d.a
 
 LIB = ar rcs
 
-LIB_SYS = -lm -Iinclude -lglfw -L "/Users/ncruz-ga/.brew/opt/glfw/lib/"
+LIB_SYS = -lm -Iinclude -lglfw -L "/Users/$(USER)/.brew/opt/glfw/lib/"
 
 SRC = src/main.c\
 		src/get_map.c\

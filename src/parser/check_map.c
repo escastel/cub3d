@@ -6,11 +6,11 @@
 /*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 18:06:26 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/05/16 16:11:14 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/05/16 16:35:26 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../cub3D.h"
 
 static int	check_walls(t_data *data, int i, int j)
 {
