@@ -6,32 +6,37 @@
 /*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 18:12:27 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/05/16 14:06:31 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/05/16 15:59:45 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
+static void	save_texture(t_data *data, char **split, int i)
+{
+	if (!ft_strncmp(split[i], "NO", 2) && data->no == NULL)
+		data->no = ft_split(split[i], ' ');
+	else if (!ft_strncmp(split[i], "SO", 2) && data->so == NULL)
+		data->so = ft_split(split[i], ' ');
+	else if (!ft_strncmp(split[i], "WE", 2) && data->we == NULL)
+		data->we = ft_split(split[i], ' ');
+	else if (!ft_strncmp(split[i], "EA", 2) && data->ea == NULL)
+		data->ea = ft_split(split[i], ' ');
+	else if (!ft_strncmp(split[i], "F", 1) && data->f == NULL)
+		data->f = ft_split(split[i], ' ');
+	else if (!ft_strncmp(split[i], "C", 1) && data->c == NULL)
+		data->c = ft_split(split[i], ' ');
+}
+
 static int	get_texture(t_data *data, char *line, int i, char **split)
 {
 	split = ft_split(line, '\n');
 	while (split[++i] != NULL)
-	{
-		if (!ft_strncmp(split[i], "NO", 2) && data->no == NULL)
-			data->no = ft_split(split[i], ' ');
-		else if (!ft_strncmp(split[i], "SO", 2) && data->so == NULL)
-			data->so = ft_split(split[i], ' ');
-		else if (!ft_strncmp(split[i], "WE", 2) && data->we == NULL)
-			data->we = ft_split(split[i], ' ');
-		else if (!ft_strncmp(split[i], "EA", 2) && data->ea == NULL)
-			data->ea = ft_split(split[i], ' ');
-		else if (!ft_strncmp(split[i], "F", 1) && data->f == NULL)
-			data->f = ft_split(split[i], ' ');
-		else if (!ft_strncmp(split[i], "C", 1) && data->c == NULL)
-			data->c = ft_split(split[i], ' ');
-	}
-	if (data->no[1] == NULL || data->so[1] == NULL || data->we[1] == NULL
-		|| data->ea[1] == NULL || data->f[1] == NULL || data->c[1] == NULL)
+		save_texture(data, split, i);
+	if ((data->no == NULL || data->so == NULL || data->we == NULL \
+		|| data->ea == NULL || data->f == NULL || data->c == NULL)
+		|| (data->no[1] == NULL || data->so[1] == NULL || data->we[1] == NULL \
+		|| data->ea[1] == NULL || data->f[1] == NULL || data->c[1] == NULL))
 		return (free_split(split), free(line),
 			print_error("can't get textures"));
 	if (check_colors(data->c[1], 0) == 1 || check_colors(data->f[1], 0) == 1
