@@ -6,7 +6,7 @@
 /*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 11:30:36 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/05/06 13:21:39 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/05/16 12:40:09 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ int	ft_strrlen(char **str)
 
 	i = 0;
 	while (str[i] != NULL)
+	{
 		i++;
+	}
 	return (i);
 }
 

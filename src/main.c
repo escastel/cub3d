@@ -6,16 +6,16 @@
 /*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 14:36:34 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/05/15 17:30:09 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/05/16 12:27:09 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-/*void	ft_leaks()
+void	ft_leaks()
 {
 	system("leaks -q cub3d");
-}atexit(ft_leaks);*/
+}
 
 static void	init_struct(t_data *d)
 {
@@ -39,6 +39,7 @@ int	main(int argc, char **argv)
 {
 	t_data	*data;
 
+	atexit(ft_leaks);
 	if (argc != 2 || check_arg(argv[1]) == 1)
 		return (print_error("incorrect argument"));
 	data = ft_calloc(1, sizeof(t_data));

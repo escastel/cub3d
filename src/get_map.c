@@ -6,7 +6,7 @@
 /*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 18:12:27 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/05/15 17:30:28 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/05/16 12:41:16 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ static int	read_map(t_data *data, int fd, char *line, char *full_map)
 			return (print_error("can't save map"));
 	}
 	free(full_map);
+	if (data->map == NULL)
+		return (print_error("empty file"));
 	return (EXIT_SUCCESS);
 }
 
@@ -83,13 +85,16 @@ static int	read_file(t_data *data, int fd, char **texture, char *line)
 		free(line);
 		line = get_next_line(fd);
 	}
+	if (read_map(data, fd, line, NULL) == 1)
+	{
+		free(line);
+		return (EXIT_FAILURE);
+	}
 	if (data->nbr_text != 6)
 	{
 		free(line);
 		return (print_error("nbr_text incorrect"));
 	}
-	if (read_map(data, fd, line, NULL) == 1)
-		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
 
@@ -106,7 +111,8 @@ int	get_map(t_data *data, char *str)
 		return (print_error("can't open file"));
 	if (read_file(data, fd, &texture, line) == 1)
 	{
-		free(texture);
+		if (texture != NULL)
+			free(texture);
 		return (EXIT_FAILURE);
 	}
 	if (get_texture(data, texture, -1, NULL) == 1)
