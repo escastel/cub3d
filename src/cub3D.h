@@ -6,7 +6,7 @@
 /*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 14:37:30 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/05/16 14:06:58 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/05/16 16:37:00 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,14 @@ typedef struct s_data
 	t_position	p_pos;
 }			t_data;
 
-/*--- CHECK ARGUMENTS ---*/
+/*--- PARSER ---*/
 int		check_arg(char *str);
 int		check_colors(char *str, int flag);
 int		check_digit(char *str);
+int		check_map(t_data *data);
 
 /*--- READ MAP ---*/
 int		get_map(t_data *data, char *str, char *line);
-int		check_map(t_data *data);
 
 /*--- CUB3D UTILS ---*/
 int		print_error(char *str);
