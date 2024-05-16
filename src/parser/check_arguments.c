@@ -6,11 +6,40 @@
 /*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 15:35:03 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/05/16 16:35:21 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/05/16 17:47:19 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
+
+int	check_close_map(t_data *data, int i)
+{
+	int	j;
+
+	j = 0;
+	while (data->map[i][j] != '\0')
+	{
+		if (data->map[i][j] == '1')
+			break ;
+		else if (data->map[i][j] == '0' || data->map[i][j] == 'W'
+			|| data->map[i][j] == 'N' || data->map[i][j] == 'E'
+			|| data->map[i][j] == 'S')
+			return (print_error("unclosed map"));
+		j++;
+	}
+	j = ft_strlen(data->map[i]) - 1;
+	while (j > 0)
+	{
+		if (data->map[i][j] == '1')
+			break ;
+		else if (data->map[i][j] == '0' || data->map[i][j] == 'W'
+			|| data->map[i][j] == 'N' || data->map[i][j] == 'E'
+			|| data->map[i][j] == 'S')
+			return (print_error("unclosed map"));
+		j--;
+	}
+	return (EXIT_SUCCESS);
+}
 
 int	check_digit(char *str)
 {

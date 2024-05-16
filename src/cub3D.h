@@ -6,7 +6,7 @@
 /*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 14:37:30 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/05/16 16:37:00 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/05/16 17:47:30 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int		check_arg(char *str);
 int		check_colors(char *str, int flag);
 int		check_digit(char *str);
 int		check_map(t_data *data);
+int		check_close_map(t_data *data, int i);
 
 /*--- READ MAP ---*/
 int		get_map(t_data *data, char *str, char *line);

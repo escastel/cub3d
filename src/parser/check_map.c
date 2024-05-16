@@ -6,7 +6,7 @@
 /*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 18:06:26 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/05/16 16:35:26 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/05/16 17:49:32 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,12 @@ static int	check_walls(t_data *data, int i, int j)
 		&& (data->map[i + 1][j] == ' ' || data->map[i - 1][j] == ' '
 		|| data->map[i][j + 1] == ' ' || data->map[i][j - 1] == ' ')))
 		return (print_error("space inside the map"));
+	if (data->map[i][j] == 'N' || data->map[i][j] == 'S'
+			|| data->map[i][j] == 'W' || data->map[i][j] == 'E')
+	{
+		data->p_pos.x = j;
+		data->p_pos.y = i;
+	}
 	return (EXIT_SUCCESS);
 }
 
@@ -115,16 +121,13 @@ int	check_map(t_data *data)
 	while (data->map[++i] != NULL)
 	{
 		j = -1;
+		if (i >= 1 || i <= data->high_map)
+			if (check_close_map(data, i) == 1)
+				return (EXIT_FAILURE);
 		while (data->map[i][++j] != '\0')
 		{
 			if (check_walls(data, i, j) == 1)
 				return (EXIT_FAILURE);
-			if (data->map[i][j] == 'N' || data->map[i][j] == 'S'
-				|| data->map[i][j] == 'W' || data->map[i][j] == 'E')
-			{
-				data->p_pos.x = j;
-				data->p_pos.y = i;
-			}
 		}
 	}
 	return (EXIT_SUCCESS);
