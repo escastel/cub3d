@@ -18,7 +18,7 @@ int	ft_printunsigned(unsigned long long int n)
 	int	aux;
 
 	count = 0;
-	if (n >= 0 && n <= 9)
+	if (n > 0 && n <= 9)
 	{
 		aux = ft_putchar(n + '0');
 		if (aux == -1)
