@@ -6,16 +6,11 @@
 /*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 14:36:34 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/05/16 16:32:39 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/07/15 16:28:58 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
-
-/*void	ft_leaks()
-{
-	system("leaks -q cub3d");
-}atexit(ft_leaks);*/
 
 static void	init_struct(t_data *d)
 {
