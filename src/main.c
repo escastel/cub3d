@@ -3,32 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 14:36:34 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/07/15 16:28:58 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/07/23 16:48:55 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
-
-static void	init_struct(t_data *d)
-{
-	d->map = NULL;
-	d->no = NULL;
-	d->so = NULL;
-	d->we = NULL;
-	d->ea = NULL;
-	d->f = NULL;
-	d->c = NULL;
-	d->nbr_text = 0;
-	d->nbr_player = 0;
-	d->width_map = 0;
-	d->high_map = 0;
-	d->p_pos.x = 0;
-	d->p_pos.y = 0;
-	d->p_pos.orientation = '\0';
-}
 
 int	main(int argc, char **argv)
 {
