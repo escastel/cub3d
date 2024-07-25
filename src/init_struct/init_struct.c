@@ -3,24 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   init_struct.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 16:49:13 by escastel          #+#    #+#             */
-/*   Updated: 2024/07/24 14:28:05 by escastel         ###   ########.fr       */
+/*   Updated: 2024/07/25 12:05:23 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
 
-void	init_player(t_player p)
+void	init_player(t_data *d)
 {
-	p.pos_x = 0.0;
-	p.pos_y = 0.0;
-	p.dir_x = 0.0;
-	p.dir_y = 0.0;
-	p.fov_rd = FOV * (M_PI / 180);
-	p.p_angle = 0.0;
-	p.orientation = '\0';
+	d->player.pos_x = 0.0;
+	d->player.pos_y = 0.0;
+	d->player.dir_x = 0.0;
+	d->player.dir_y = 0.0;
+	d->player.fov_rd = FOV * (M_PI / 180);
+	d->player.p_angle = 0.0;
+	d->player.orientation = '\0';
 }
 
 void	init_ray(t_ray *ray)
@@ -42,7 +42,7 @@ void	init_data(t_data *d)
 	d->nbr_player = 0;
 	d->width_map = 0;
 	d->high_map = 0;
-	init_player(d->player);
+	init_player(d);
 	d->ray = ft_calloc(1, sizeof(t_ray));
 	init_ray(d->ray);
 }

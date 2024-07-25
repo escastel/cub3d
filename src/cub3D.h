@@ -6,7 +6,7 @@
 /*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 14:37:30 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/07/25 12:00:50 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/07/25 12:05:40 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ typedef struct s_data
 /*--- INIT_STRUCT ---*/
 
 void	init_data(t_data *d);
-void	init_player(t_player p);
+void	init_player(t_data *d);
 
 /*--- PARSER ---*/
 

@@ -6,11 +6,11 @@
 /*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 11:30:36 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/05/16 12:46:04 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/07/25 12:05:47 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../cub3D.h"
 
 int	print_error(char *str)
 {
