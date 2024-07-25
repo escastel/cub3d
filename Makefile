@@ -13,11 +13,12 @@ LIB = ar rcs
 LIB_SYS = -lm -Iinclude -lglfw -L "/Users/$(USER)/.brew/opt/glfw/lib/"
 
 SRC =	src/main.c\
-		src/init_struct/init_struct\
+		src/init_struct/init_struct.c\
 		src/utils/get_map.c\
 		src/utils/cub3D_utils.c\
 		src/parser/check_map.c\
 		src/parser/check_arguments.c\
+		src/game/game_loop.c\
 
 OBJ = $(SRC:.c=.o)
 
