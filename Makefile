@@ -24,7 +24,7 @@ OBJ = $(SRC:.c=.o)
 
 $(NAME):	$(OBJ) $(LIBFT) $(MLX)
 				$(LIB) $(LIB_NAME) $(OBJ)
-				gcc $(CFLAGS) $(LIB_NAME) $(LIBFT) $(MLX) $(LIB_SYS) -o $(NAME)
+				gcc $(CFLAGS) $(LIB_NAME) $(LIBFT) $(MLX) $(LIB_SYS) -o $(NAME) -no-pie
 
 $(OBJ):	src/%.o : src/%.c
 				gcc $(CFLAGS) -c $< -o $@
