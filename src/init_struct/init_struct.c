@@ -6,7 +6,7 @@
 /*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 16:49:13 by escastel          #+#    #+#             */
-/*   Updated: 2024/07/25 12:05:23 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/07/25 12:19:56 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	init_ray(t_ray *ray)
 	ray->distance = 0.0;
 	ray->flag = 0;
 }
+
 void	init_data(t_data *d)
 {
 	d->map = NULL;

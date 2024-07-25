@@ -6,7 +6,7 @@
 /*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 14:37:30 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/07/25 12:08:27 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/07/25 12:19:34 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,21 +25,20 @@
 # define PLAYER_SPEED	4
 # define ROTATION_SPEED	0.045
 
-typedef	struct s_ray
+typedef struct s_ray
 {
-	int 	flag;
+	int		flag;
 	double	distance;
 	double	ray_angle;
 }			t_ray;
 
-
 typedef struct s_player
 {
 	char	orientation;
-	double	pos_x; 		// START POSITION
-	double	pos_y; 		// START POSITION
-	double	dir_x; 		// INITIAL DIRECTION VECTOR
-	double	dir_y; 		// INITIAL DIRECTION VECTOR
+	double	pos_x;		// START POSITION
+	double	pos_y;		// START POSITION
+	double	dir_x;		// INITIAL DIRECTION VECTOR
+	double	dir_y;		// INITIAL DIRECTION VECTOR
 	double	fov_rd;		// FOV EN RADIANES
 	double	p_angle;	// ANGLE
 }			t_player;
