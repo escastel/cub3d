@@ -6,7 +6,7 @@
 /*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 14:36:34 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/07/25 12:07:54 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/07/25 12:25:21 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ int	main(int argc, char **argv)
 		return (free_all(data), EXIT_FAILURE);
 	if (check_map(data) == 1)
 		return (free_all(data), EXIT_FAILURE);
-	init_game(data);
+	if (init_game(data) == EXIT_FAILURE)
+		return (EXIT_FAILURE);
 	free_all(data);
 	return (EXIT_SUCCESS);
 }
