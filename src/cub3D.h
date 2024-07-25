@@ -6,7 +6,7 @@
 /*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 14:37:30 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/07/25 12:05:40 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/07/25 12:08:27 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ typedef struct s_data
 	int			nbr_player;
 	int			width_map;
 	int			high_map;
-	mlx_t		mlx;
+	mlx_t		*mlx;
 	t_ray		*ray;
 	t_player	player;
 }			t_data;
@@ -78,6 +78,9 @@ int		check_close_map(t_data *data, int i);
 /*--- READ MAP ---*/
 
 int		get_map(t_data *data, char *str, char *line);
+
+/*--- GAME ---*/
+int		init_game(t_data *data);
 
 /*--- CUB3D UTILS ---*/
 
