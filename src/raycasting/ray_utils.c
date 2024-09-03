@@ -6,26 +6,12 @@
 /*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 15:11:56 by escastel          #+#    #+#             */
-/*   Updated: 2024/09/03 13:26:34 by escastel         ###   ########.fr       */
+/*   Updated: 2024/09/03 18:04:27 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
 
-/* int	check_walls(t_data *data, int x, int y)
-{
-	if (data->map[y][x] = '1')
-		return (1);
-	return (0);
-}
-
-int	check_limits(t_data *data, int next_x, int next_y)
-{
-	if (next_x < 0 || next_y < 0 || next_x >= data->width_map || next_y >= data->high_map)
-		return (1);
-	return (0);
-
-} */
 double	get_player_angle(char c)
 {
 	double	angle;
@@ -40,6 +26,7 @@ double	get_player_angle(char c)
 		angle = 360 * (M_PI / 180);
 	return (angle);
 }
+
 double	orientation(double angle, char c)
 {
 	if (c == 'x')
@@ -58,4 +45,43 @@ double	correct_angle(double angle)
 	if (angle >= (360 * (M_PI / 180)))
 		angle -= 360 * (M_PI / 180);
 	return (angle);
+}
+
+double	get_distance(t_ray ray, t_coord wall)
+{
+	t_coord	diff;
+	double	delta;
+	double	distance;
+	double	hypotenuse;
+
+	diff.x = wall.x - ray.origin.x;
+	diff.y = wall.y - ray.origin.y;
+	hypotenuse = sqrt(pow(diff.x, 2) + pow(diff.y, 2));
+	delta = ray.p_angle - ray.ray_angle;
+	distance = hypotenuse * cos(delta);
+	return (distance);
+}
+
+int	check_walls(t_data *data, t_ray ray, t_coord pos, char c)
+{
+	int	x;
+	int	y;
+
+	x = (int)pos.x;
+	y = (int)pos.y;
+	if (c == 'x')
+	{
+		if (ray.cross_y.x < 0)
+			y -= 1;
+	}
+	if (c == 'y')
+	{
+		if (ray.cross_x.y < 0)
+			x -= 1;
+	}
+	if (x < 0 || y < 0 || y > data->high_map || x > data->width_map)
+		return (1);
+	if (data->map[y][x] == '1')
+		return (1);
+	return (0);
 }

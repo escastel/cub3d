@@ -6,7 +6,7 @@
 /*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 18:06:26 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/09/03 13:24:49 by escastel         ###   ########.fr       */
+/*   Updated: 2024/09/03 16:53:17 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ static void	fix_map(t_data *data, int i, int j)
 		free(tmp);
 		i++;
 	}
-	data->high_map = i;
+	data->high_map = i - 1; // -1 ya que pasa al NULL.
 }
 
 int	check_map(t_data *data)

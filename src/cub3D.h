@@ -6,7 +6,7 @@
 /*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 14:37:30 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/09/03 13:27:24 by escastel         ###   ########.fr       */
+/*   Updated: 2024/09/03 18:05:47 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@
 # define PLAYER_SPEED	4
 # define ROTATION_SPEED	0.045
 
-
-typedef	struct s_coord
+typedef struct s_coord
 {
 	double	x;
 	double	y;
@@ -35,6 +34,7 @@ typedef struct s_ray
 {
 	int		flag;
 	char	wall_o;
+	double	p_angle;
 	double	distance;
 	double	ray_angle;
 	t_coord	origin;
@@ -84,15 +84,15 @@ int		init_game(t_data *data);
 
 /*--- RAYCASTING ---*/
 
-int		ray_loop(t_data *data);
+t_ray	throw_ray(t_data *data, double angle);
 
 /*--- RAYCASTING UTILS ---*/
 
-double	correct_angle(double angle);
 double	get_player_angle(char c);
+double	correct_angle(double angle);
 double	orientation(double angle, char c);
-/* int		check_walls(t_data *data, int x, int y);
-int		check_limits(t_data *data, int next_x, int next_y); */
+double	get_distance(t_ray ray, t_coord wall);
+int		check_walls(t_data *data, t_ray ray, t_coord pos, char c);
 
 /*--- CUB3D UTILS ---*/
 
