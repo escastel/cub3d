@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 18:06:26 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/07/25 12:20:24 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/09/03 13:24:49 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ static int	check_walls(t_data *data, int i, int j)
 	if (data->map[i][j] == 'N' || data->map[i][j] == 'S'
 			|| data->map[i][j] == 'W' || data->map[i][j] == 'E')
 	{
-		data->player.pos_x = j;/* * 0.5 */
-		data->player.pos_y = i;/* * 0.5 */
+		data->pos_x = j + 0.5;
+		data->pos_y = i + 0.5;
 	}
 	return (EXIT_SUCCESS);
 }
@@ -52,7 +52,7 @@ static int	check_elements(t_data *d)
 				|| d->map[i][j] == 'W' || d->map[i][j] == 'E')
 			{
 				d->nbr_player++;
-				d->player.orientation = d->map[i][j];
+				d->orientation = d->map[i][j];
 			}
 		}
 	}

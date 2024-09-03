@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 14:37:30 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/07/25 12:19:34 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/09/03 13:27:24 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,27 +21,26 @@
 # define M_PI			3.14159265358979323846
 # define S_WIDTH		1280
 # define S_HEIGHT		960
-# define TILE_SIZE		30
 # define PLAYER_SPEED	4
 # define ROTATION_SPEED	0.045
+
+
+typedef	struct s_coord
+{
+	double	x;
+	double	y;
+}				t_coord;
 
 typedef struct s_ray
 {
 	int		flag;
+	char	wall_o;
 	double	distance;
 	double	ray_angle;
+	t_coord	origin;
+	t_coord	cross_x;
+	t_coord	cross_y;
 }			t_ray;
-
-typedef struct s_player
-{
-	char	orientation;
-	double	pos_x;		// START POSITION
-	double	pos_y;		// START POSITION
-	double	dir_x;		// INITIAL DIRECTION VECTOR
-	double	dir_y;		// INITIAL DIRECTION VECTOR
-	double	fov_rd;		// FOV EN RADIANES
-	double	p_angle;	// ANGLE
-}			t_player;
 
 typedef struct s_data
 {
@@ -52,19 +51,21 @@ typedef struct s_data
 	char		**ea;
 	char		**f;
 	char		**c;
+	char		orientation;
 	int			nbr_text;
 	int			nbr_player;
 	int			width_map;
 	int			high_map;
+	double		fov_rd;	// FOV EN RADIANES
+	double		pos_x;	// START POSITION
+	double		pos_y;
+	double		p_angle;
 	mlx_t		*mlx;
-	t_ray		*ray;
-	t_player	player;
 }			t_data;
 
 /*--- INIT_STRUCT ---*/
 
 void	init_data(t_data *d);
-void	init_player(t_data *d);
 
 /*--- PARSER ---*/
 
@@ -80,6 +81,18 @@ int		get_map(t_data *data, char *str, char *line);
 
 /*--- GAME ---*/
 int		init_game(t_data *data);
+
+/*--- RAYCASTING ---*/
+
+int		ray_loop(t_data *data);
+
+/*--- RAYCASTING UTILS ---*/
+
+double	correct_angle(double angle);
+double	get_player_angle(char c);
+double	orientation(double angle, char c);
+/* int		check_walls(t_data *data, int x, int y);
+int		check_limits(t_data *data, int next_x, int next_y); */
 
 /*--- CUB3D UTILS ---*/
 

@@ -5,50 +5,68 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/23 16:42:15 by escastel          #+#    #+#             */
-/*   Updated: 2024/07/24 14:29:11 by escastel         ###   ########.fr       */
+/*   Created: 2024/09/02 16:33:48 by escastel          #+#    #+#             */
+/*   Updated: 2024/09/03 13:27:46 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
 
-void	orientation(t_player p)
+t_ray	init_ray(t_data *data, double angle)
 {
-	if (p.orientation == 'N')
-	{
-		p.dir_y = -1.0;
-		p.p_angle = 270 * (M_PI / 180);
-	}
-	if (p.orientation == 'S')
-	{
-		p.dir_y = 1.0;
-		p.p_angle = 90 * (M_PI / 180);
-	}
-	if (p.orientation == 'W')
-	{
-		p.dir_x = -1.0;
-		p.p_angle = 180 * (M_PI / 180);
-	}
-	if (p.orientation == 'E')
-	{
-		p.dir_x = 0.0;
-		p.p_angle = 360 * (M_PI / 180);
-	}
-	
+	t_ray	ray;
+
+	ray.flag = 0;
+	ray.distance = 0;
+	ray.ray_angle = angle;
+	ray.origin.x = data->pos_x;
+	ray.origin.y = data->pos_y;
+	ray.cross_x.y = orientation(angle, 'y');
+	ray.cross_y.x = orientation(angle, 'x');
+	ray.cross_x.x = ray.cross_x.y / tan(angle);
+	ray.cross_y.y = ray.cross_y.x * tan(angle);
 }
 
-int	ray_loop(t_data *data)
+t_coord	first_step(t_ray ray, char c)
 {
-	double	h_inter;
-	double	v_inter;
-	int		rays;
+	t_coord	pos;
 
-	rays = 0;
-	orientation(data->player);
-	data->ray->ray_angle = data->player.p_angle - (data->player.fov_rd / 2); // FIRST RAY
-	while (rays < S_WIDTH)
+	if (c == 'x')
 	{
-		data->ray->flag = 0;
+		ray.cross_x.y
 	}
-	return (0);
+}
+
+double	get_distance(t_data *data, t_ray ray, char c)
+{
+	t_coord	pos;
+
+	pos = first_step(ray, c);
+}
+
+void	throw_ray(t_data *data, double angle)
+{
+	t_ray	ray;
+	double	distance_x;
+	double	distance_y;
+	
+	ray = init_ray(data, angle);
+	distance_x = get_distance(data, ray, 'x');
+	distance_y = get_distance(data, ray, 'y');
+	if (distance_x < distance_y)
+	{
+		ray.distance = distance_x;
+		if (ray.cross_x.y < 0)
+			ray.wall_o = 'S';
+		else
+			ray.wall_o = 'N';
+	}
+	else
+	{
+		ray.distance = distance_y;
+		if (ray.cross_y.x < 0)
+			ray.wall_o = 'E';
+		else
+			ray.wall_o = 'W';
+	}
 }

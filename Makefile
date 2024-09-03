@@ -19,6 +19,8 @@ SRC =	src/main.c\
 		src/parser/check_map.c\
 		src/parser/check_arguments.c\
 		src/game/game_loop.c\
+		src/raycasting/raycasting.c\
+		src/raycasting/ray_utils.c
 
 OBJ = $(SRC:.c=.o)
 
