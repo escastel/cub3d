@@ -6,7 +6,7 @@
 /*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 16:02:23 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/09/03 17:45:54 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/09/03 18:39:47 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ static void	paint_square(mlx_image_t *minimap, int x, int y, int color)
 	{
 		x = size_x - S_HEIGHT / 50;
 		while (x <= size_x)
-			mlx_put_pixel(minimap, x++, y, color);
+		{
+			mlx_put_pixel(minimap, x, y, color);
+			x++;
+		}
 		y++;
 	}
 }
@@ -77,11 +80,11 @@ void	put_minimap(t_data *data)
 {
 	data->minimap = mlx_new_image(data->mlx, data->width_map * S_HEIGHT / 25,
 			data->high_map * S_HEIGHT / 25);
+	paint_minimap(data, data->minimap);
+	mlx_image_to_window(data->mlx, data->minimap, 0, 0);
 	data->player = mlx_new_image(data->mlx, data->width_map * S_HEIGHT / 25,
 			data->high_map * S_HEIGHT / 25);
-	paint_minimap(data, data->minimap);
 	paint_player(data, S_HEIGHT / 50, S_HEIGHT / 50);
-	mlx_image_to_window(data->mlx, data->minimap, 0, 0);
 	mlx_image_to_window(data->mlx, data->player,
 		(data->pos_x - 1) * S_HEIGHT / 50, (data->pos_y - 1) * S_HEIGHT / 50);
 }
