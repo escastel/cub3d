@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 14:37:30 by ncruz-ga          #+#    #+#             */
 /*   Updated: 2024/09/03 18:05:47 by escastel         ###   ########.fr       */
@@ -23,6 +23,10 @@
 # define S_HEIGHT		960
 # define PLAYER_SPEED	4
 # define ROTATION_SPEED	0.045
+# define BLACK 0x000000ff
+# define PINK 0xF8A4A7ff
+# define TRANSPARENT 0x00000000
+# define WHITE 0xffffffff
 
 typedef struct s_coord
 {
@@ -61,6 +65,8 @@ typedef struct s_data
 	double		pos_y;
 	double		p_angle;
 	mlx_t		*mlx;
+	mlx_image_t	*minimap;
+	mlx_image_t	*player;
 }			t_data;
 
 /*--- INIT_STRUCT ---*/
@@ -81,6 +87,7 @@ int		get_map(t_data *data, char *str, char *line);
 
 /*--- GAME ---*/
 int		init_game(t_data *data);
+void	put_minimap(t_data *data);
 
 /*--- RAYCASTING ---*/
 
