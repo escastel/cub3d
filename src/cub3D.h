@@ -6,7 +6,7 @@
 /*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 14:37:30 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/09/03 18:05:47 by escastel         ###   ########.fr       */
+/*   Updated: 2024/09/03 18:55:12 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ int		get_map(t_data *data, char *str, char *line);
 /*--- GAME ---*/
 int		init_game(t_data *data);
 void	put_minimap(t_data *data);
+void	hook(void *param);
 
 /*--- RAYCASTING ---*/
 
