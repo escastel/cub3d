@@ -6,47 +6,47 @@
 /*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 16:02:23 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/09/03 18:39:47 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/09/03 18:45:44 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
 
-static void	paint_square(mlx_image_t *minimap, int x, int y, int color)
+static void	paint_square(mlx_image_t *minimap, int i, int j, int color)
 {
-	int	size_x;
-	int	size_y;
+	int	size_i;
+	int	size_j;
 
-	size_x = x + S_HEIGHT / 50;
-	size_y = y + S_HEIGHT / 50;
-	while (y <= size_y)
+	size_i = i + S_HEIGHT / 50;
+	size_j = j + S_HEIGHT / 50;
+	while (j <= size_j)
 	{
-		x = size_x - S_HEIGHT / 50;
-		while (x <= size_x)
+		i = size_i - S_HEIGHT / 50;
+		while (i <= size_i)
 		{
-			mlx_put_pixel(minimap, x, y, color);
-			x++;
+			mlx_put_pixel(minimap, i, j, color);
+			i++;
 		}
-		y++;
+		j++;
 	}
 }
 
-static void	paint_player(t_data *data, int x, int y)
+static void	paint_player(t_data *data, int i, int j)
 {
-	int	size_x;
-	int	size_y;
+	int	size_i;
+	int	size_j;
 
-	size_x = x + (S_HEIGHT / 50 / 2);
-	size_y = y + (S_HEIGHT / 50 / 2);
-	while (y < size_y)
+	size_i = i + (S_HEIGHT / 50 / 2);
+	size_j = j + (S_HEIGHT / 50 / 2);
+	while (j < size_j)
 	{
-		x = size_x - (S_HEIGHT / 50 / 2);
-		while (x < size_x)
+		i = size_i - (S_HEIGHT / 50 / 2);
+		while (i < size_i)
 		{
-			mlx_put_pixel(data->player, x, y, WHITE);
-			x++;
+			mlx_put_pixel(data->player, i, j, WHITE);
+			i++;
 		}
-		y++;
+		j++;
 	}
 }
 
