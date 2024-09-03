@@ -6,18 +6,19 @@
 /*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 16:33:48 by escastel          #+#    #+#             */
-/*   Updated: 2024/09/03 13:27:46 by escastel         ###   ########.fr       */
+/*   Updated: 2024/09/03 18:04:37 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
 
-t_ray	init_ray(t_data *data, double angle)
+static t_ray	init_ray(t_data *data, double angle)
 {
 	t_ray	ray;
 
 	ray.flag = 0;
 	ray.distance = 0;
+	ray.p_angle = data->p_angle;
 	ray.ray_angle = angle;
 	ray.origin.x = data->pos_x;
 	ray.origin.y = data->pos_y;
@@ -27,32 +28,61 @@ t_ray	init_ray(t_data *data, double angle)
 	ray.cross_y.y = ray.cross_y.x * tan(angle);
 }
 
-t_coord	first_step(t_ray ray, char c)
+static t_coord	first_step(t_ray ray, char c)
 {
 	t_coord	pos;
 
+	pos.x = ray.origin.x;
+	pos.y = ray.origin.y;
 	if (c == 'x')
 	{
-		ray.cross_x.y
+		if (ray.cross_x.y > 0)
+			pos.y = ceil(pos.y);
+		else
+			pos.y = floor(pos.y);
+		pos.x += (pos.y - ray.origin.y) / tan(ray.ray_angle);
 	}
+	if (c == 'y')
+	{
+		if (ray.cross_y.x > 0)
+			pos.x = ceil(pos.x);
+		else
+			pos.x = floor(pos.x);
+		pos.y += (pos.x - ray.origin.x) * tan(ray.ray_angle);
+	}
+	return (pos);
 }
 
-double	get_distance(t_data *data, t_ray ray, char c)
+static double	search_walls(t_data *data, t_ray ray, char c)
 {
 	t_coord	pos;
 
 	pos = first_step(ray, c);
+	while (!check_walls(data, ray, pos, c))
+	{
+		if (c == 'x')
+		{
+			pos.x += ray.cross_x.x;
+			pos.y += ray.cross_x.y;
+		}
+		if (c == 'y')
+		{
+			pos.x += ray.cross_y.x;
+			pos.y += ray.cross_y.y;
+		}
+	}
+	return (get_distance(ray, pos));
 }
 
-void	throw_ray(t_data *data, double angle)
+t_ray	throw_ray(t_data *data, double angle)
 {
 	t_ray	ray;
 	double	distance_x;
 	double	distance_y;
-	
+
 	ray = init_ray(data, angle);
-	distance_x = get_distance(data, ray, 'x');
-	distance_y = get_distance(data, ray, 'y');
+	distance_x = search_walls(data, ray, 'x');
+	distance_y = search_walls(data, ray, 'y');
 	if (distance_x < distance_y)
 	{
 		ray.distance = distance_x;
@@ -69,4 +99,5 @@ void	throw_ray(t_data *data, double angle)
 		else
 			ray.wall_o = 'W';
 	}
+	return (ray);
 }
