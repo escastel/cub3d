@@ -6,7 +6,7 @@
 /*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 14:37:30 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/09/03 18:55:12 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/09/04 12:22:57 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ typedef struct s_coord
 
 typedef struct s_ray
 {
-	int		flag;
 	char	wall_o;
 	double	p_angle;
 	double	distance;

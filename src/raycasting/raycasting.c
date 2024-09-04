@@ -6,7 +6,7 @@
 /*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 16:33:48 by escastel          #+#    #+#             */
-/*   Updated: 2024/09/03 18:04:37 by escastel         ###   ########.fr       */
+/*   Updated: 2024/09/04 12:22:52 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ static t_ray	init_ray(t_data *data, double angle)
 {
 	t_ray	ray;
 
-	ray.flag = 0;
 	ray.distance = 0;
 	ray.p_angle = data->p_angle;
 	ray.ray_angle = angle;
