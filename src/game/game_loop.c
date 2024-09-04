@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_loop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 11:59:56 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/09/03 18:33:12 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/09/04 13:44:21 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	init_game(t_data *data)
 {
+	data->p_angle = get_player_angle(data->orientation);
 	data->mlx = mlx_init(S_WIDTH, S_HEIGHT, "cub3D", false);
 	if (!data->mlx)
 		return (EXIT_FAILURE);
