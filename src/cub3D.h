@@ -6,7 +6,7 @@
 /*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 14:37:30 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/09/04 12:22:57 by escastel         ###   ########.fr       */
+/*   Updated: 2024/09/04 13:10:43 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ double	get_player_angle(char c);
 double	correct_angle(double angle);
 double	orientation(double angle, char c);
 double	get_distance(t_ray ray, t_coord wall);
-int		check_walls(t_data *data, t_ray ray, t_coord pos, char c);
+int		collition_walls(t_data *data, t_ray ray, t_coord pos, char c);
 
 /*--- CUB3D UTILS ---*/
 

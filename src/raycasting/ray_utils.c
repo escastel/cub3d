@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 15:11:56 by escastel          #+#    #+#             */
-/*   Updated: 2024/09/03 18:04:27 by escastel         ###   ########.fr       */
+/*   Updated: 2024/09/04 13:06:13 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ double	get_distance(t_ray ray, t_coord wall)
 	return (distance);
 }
 
-int	check_walls(t_data *data, t_ray ray, t_coord pos, char c)
+int	collition_walls(t_data *data, t_ray ray, t_coord pos, char c)
 {
 	int	x;
 	int	y;
