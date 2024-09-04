@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 16:33:48 by escastel          #+#    #+#             */
-/*   Updated: 2024/09/04 12:22:52 by escastel         ###   ########.fr       */
+/*   Updated: 2024/09/04 13:08:20 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ static t_ray	init_ray(t_data *data, double angle)
 	ray.cross_y.x = orientation(angle, 'x');
 	ray.cross_x.x = ray.cross_x.y / tan(angle);
 	ray.cross_y.y = ray.cross_y.x * tan(angle);
+	return (ray);
 }
 
 static t_coord	first_step(t_ray ray, char c)
@@ -57,7 +58,7 @@ static double	search_walls(t_data *data, t_ray ray, char c)
 	t_coord	pos;
 
 	pos = first_step(ray, c);
-	while (!check_walls(data, ray, pos, c))
+	while (!collition_walls(data, ray, pos, c))
 	{
 		if (c == 'x')
 		{
