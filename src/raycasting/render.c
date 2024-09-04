@@ -6,7 +6,7 @@
 /*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:40:53 by escastel          #+#    #+#             */
-/*   Updated: 2024/09/04 18:24:19 by escastel         ###   ########.fr       */
+/*   Updated: 2024/09/04 18:46:59 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ static int	get_color(t_ray ray)
 		return (0xB5B5B5FF);
 	if (ray.wall_o == 'E')
 		return (0xB5B5B5FF);
+	return (-1);
 }
 
 static void	draw_wall(t_data *data, t_ray ray, double top, double bot)
@@ -29,6 +30,8 @@ static void	draw_wall(t_data *data, t_ray ray, double top, double bot)
 	int	color;
 
 	color = get_color(ray);
+	if (color == -1)
+		return ;
 	while (top < bot)
 	{
 		if (!(data->rays < 0 || data->rays >= S_WIDTH
@@ -38,7 +41,7 @@ static void	draw_wall(t_data *data, t_ray ray, double top, double bot)
 	}
 }
 
-static void	draw_floor_sky(t_data *data, t_ray ray, double top, double bot)
+static void	draw_floor_sky(t_data *data, double top, double bot)
 {
 	int	copy;
 
@@ -75,5 +78,5 @@ void	scale_wall(t_data *data, t_ray ray)
 	if (bot > S_HEIGHT)
 		bot = S_HEIGHT;
 	draw_wall(data, ray, top, bot);
-	draw_floor_sky(data, ray, top, bot);
+	draw_floor_sky(data, top, bot);
 }

@@ -18,8 +18,9 @@ SRC =	src/main.c\
 		src/utils/cub3D_utils.c\
 		src/parser/check_map.c\
 		src/parser/check_arguments.c\
-		src/raycasting/raycasting.c\
+		src/raycasting/ray_casting.c\
 		src/raycasting/ray_utils.c\
+		src/raycasting/render.c\
 		src/game/game_loop.c\
 		src/game/hook.c\
 		src/game/minimap.c\
