@@ -6,7 +6,7 @@
 /*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 14:37:30 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/09/03 17:52:33 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/09/04 12:25:57 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,12 @@
 # define S_HEIGHT		960
 # define PLAYER_SPEED	4
 # define ROTATION_SPEED	0.045
-
 # define BLACK 0x000000ff
 # define PINK 0xF8A4A7ff
 # define TRANSPARENT 0x00000000
 # define WHITE 0xffffffff
 
-typedef	struct s_coord
+typedef struct s_coord
 {
 	double	x;
 	double	y;
@@ -39,6 +38,7 @@ typedef struct s_ray
 {
 	int		flag;
 	char	wall_o;
+	double	p_angle;
 	double	distance;
 	double	ray_angle;
 	t_coord	origin;
@@ -92,15 +92,15 @@ void	hook(void *param);
 
 /*--- RAYCASTING ---*/
 
-int		ray_loop(t_data *data);
+t_ray	throw_ray(t_data *data, double angle);
 
 /*--- RAYCASTING UTILS ---*/
 
-double	correct_angle(double angle);
 double	get_player_angle(char c);
+double	correct_angle(double angle);
 double	orientation(double angle, char c);
-/* int		check_walls(t_data *data, int x, int y);
-int		check_limits(t_data *data, int next_x, int next_y); */
+double	get_distance(t_ray ray, t_coord wall);
+int		check_walls(t_data *data, t_ray ray, t_coord pos, char c);
 
 /*--- CUB3D UTILS ---*/
 
