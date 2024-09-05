@@ -6,7 +6,7 @@
 /*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:40:53 by escastel          #+#    #+#             */
-/*   Updated: 2024/09/05 13:37:01 by escastel         ###   ########.fr       */
+/*   Updated: 2024/09/05 16:35:50 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 static int	get_color(t_ray ray)
 {
 	if (ray.wall_o == 'N')
-		return (0x007F007F); // GREEN
+		return (0x007F0040); // GREEN
 	if (ray.wall_o == 'S') // BLUE
-		return (0xADD8E6); 
+		return (0xADD8E640); 
 	if (ray.wall_o == 'W') //PINK
-		return (0xFFC0CBFF);
+		return (0xFFC0CB40);
 	if (ray.wall_o == 'E') // RED
-		return (0xFF0000FF);
+		return (0xFF000040);
 	return (-1);
 }
 
@@ -50,7 +50,7 @@ static void	draw_floor_sky(t_data *data, double top, double bot)
 	{
 		if (!(data->rays < 0 || data->rays >= S_WIDTH
 				|| copy < 0 || copy >= S_HEIGHT))
-			mlx_put_pixel(data->raycasting, data->rays, copy, 0x89CFF3FF);
+			mlx_put_pixel(data->raycasting, data->rays, copy, 0x80008080);
 		copy++;
 	}
 	copy = bot;
@@ -58,7 +58,7 @@ static void	draw_floor_sky(t_data *data, double top, double bot)
 	{
 		if (!(data->rays < 0 || data->rays >= S_WIDTH
 				|| copy < 0 || copy >= S_HEIGHT))
-			mlx_put_pixel(data->raycasting, data->rays, copy, 0xB99470FF);
+			mlx_put_pixel(data->raycasting, data->rays, copy, 0xFFA50080);
 		copy++;
 	}
 }
@@ -77,6 +77,6 @@ void	scale_wall(t_data *data, t_ray ray)
 	bot = (S_HEIGHT / 2) + (w_height / 2);
 	if (bot > S_HEIGHT)
 		bot = S_HEIGHT;
-	draw_wall(data, ray, top, bot);
+ 	draw_wall(data, ray, top, bot);
 	draw_floor_sky(data, top, bot);
 }
