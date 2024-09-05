@@ -39,5 +39,5 @@ void	hook(void *param)
 	ray_loop(data);
 	if (mlx_is_key_down(data->mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(data->mlx);
-	//player_move(data);
+	player_move(data);
 }

@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   game_loop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 11:59:56 by ncruz-ga          #+#    #+#             */
 /*   Updated: 2024/09/04 18:34:20 by escastel         ###   ########.fr       */
