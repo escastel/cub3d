@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_casting.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 16:33:48 by escastel          #+#    #+#             */
-/*   Updated: 2024/09/05 14:33:12 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/09/05 16:29:35 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static double	search_walls(t_data *data, t_ray ray, char c)
 {
 	t_coord	pos;
 
-	pos = first_step(ray, c);
+	pos = first_step(ray, c);  
 	while (!collition_walls(data, ray, pos, c))
 	{
 		if (c == 'x')
@@ -108,12 +108,13 @@ void	ray_loop(t_data *data)
 	double	angle;
 
 	angle = data->p_angle - (data->fov_rd / 2);
+	correct_angle(angle);
 	data->rays = 0;
-	while (data->rays < S_WIDTH)
+ 	while (data->rays < S_WIDTH)
 	{
 		ray = throw_ray(data, angle);
 		scale_wall(data, ray);
-		angle += data->fov_rd / S_WIDTH;
+	 	angle += data->fov_rd / S_WIDTH;
 		data->rays++;
-	}
+ 	}
 }

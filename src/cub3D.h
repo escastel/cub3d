@@ -6,7 +6,7 @@
 /*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 14:37:30 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/09/05 13:08:38 by escastel         ###   ########.fr       */
+/*   Updated: 2024/09/05 15:48:59 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CUB3D_H
 
 # include <math.h>
+# include <stdio.h>
 # include "../libft/libft.h"
 # include "../MLX42/include/MLX42/MLX42.h"
 
