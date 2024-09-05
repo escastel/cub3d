@@ -6,7 +6,7 @@
 /*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 16:33:48 by escastel          #+#    #+#             */
-/*   Updated: 2024/09/04 18:15:05 by escastel         ###   ########.fr       */
+/*   Updated: 2024/09/05 12:18:17 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,6 @@ void	ray_loop(t_data *data)
 	double	angle;
 
 	angle = data->p_angle - (data->fov_rd / 2);
-	angle = correct_angle(angle);
 	data->rays = 0;
 	while (data->rays < S_WIDTH)
 	{

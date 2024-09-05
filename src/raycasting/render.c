@@ -6,7 +6,7 @@
 /*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:40:53 by escastel          #+#    #+#             */
-/*   Updated: 2024/09/05 13:01:32 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/09/05 13:27:40 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 static int	get_color(t_ray ray)
 {
 	if (ray.wall_o == 'N')
-		return (0xF5F5F5FF);
-	if (ray.wall_o == 'S')
-		return (0xF5F5F5FF);
-	if (ray.wall_o == 'W')
-		return (0xB5B5B5FF);
-	if (ray.wall_o == 'E')
-		return (0xB5B5B5FF);
+		return (0x007F007F); // GREEN
+	if (ray.wall_o == 'S') // BLUE
+		return (0xADD8E6); 
+	if (ray.wall_o == 'W') //PINK
+		return (0xFFC0CBFF);
+	if (ray.wall_o == 'E') // RED
+		return (0xFF0000FF);
 	return (-1);
 }
 
@@ -36,7 +36,7 @@ static void	draw_wall(t_data *data, t_ray ray, double top, double bot)
 	{
 		if (!(data->rays < 0 || data->rays >= S_WIDTH
 				|| top < 0 || top >= S_HEIGHT))
-			mlx_put_pixel(/*imagen*/, data->rays, top, color);
+			mlx_put_pixel(data->raycasting, data->rays, top, color);
 		top++;
 	}
 }
@@ -46,11 +46,12 @@ static void	draw_floor_sky(t_data *data, double top, double bot)
 	int	copy;
 
 	copy = 0;
+	(void)ray;
 	while (copy < top) // SKY
 	{
 		if (!(data->rays < 0 || data->rays >= S_WIDTH
 				|| copy < 0 || copy >= S_HEIGHT))
-			mlx_put_pixel(/*imagen*/, data->rays, copy, 0x89CFF3FF);
+			mlx_put_pixel(data->raycasting, data->rays, copy, 0x89CFF3FF);
 		copy++;
 	}
 	copy = bot;
@@ -58,7 +59,7 @@ static void	draw_floor_sky(t_data *data, double top, double bot)
 	{
 		if (!(data->rays < 0 || data->rays >= S_WIDTH
 				|| copy < 0 || copy >= S_HEIGHT))
-			mlx_put_pixel(/*imagen*/, data->rays, copy, 0xB99470FF);
+			mlx_put_pixel(data->raycasting, data->rays, copy, 0xB99470FF);
 		copy++;
 	}
 }

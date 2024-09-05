@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../cub3D.h"
+
 /*
 static void	clean_wall(t_data *data)
 {
@@ -23,13 +24,13 @@ static void	clean_wall(t_data *data)
 		x = 0;
 		while (x < S_WIDTH)
 		{
-			mlx_put_pixel(, x, y, TRANSPARENT);
-			mlx_put_pixel(, x, y, TRANSPARENT);
+			mlx_put_pixel(imagen, x, y, TRANSPARENT);
+			mlx_put_pixel(imagen, x, y, TRANSPARENT);
 			x++;
 		}
 		y++;
 	}
-}*/
+}*/                
 
 void	hook(void *param)
 {
