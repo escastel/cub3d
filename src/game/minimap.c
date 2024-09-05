@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 16:02:23 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/09/05 13:01:15 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/09/05 14:00:16 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,11 +103,9 @@ static void	paint_minimap(t_data *data, mlx_image_t *minimap)
 		i++;
 	}
 }
-// PONER PARCHES DE ERRORRRR
+
 void	put_minimap(t_data *data)
 {
-	data->player = mlx_new_image(data->mlx, data->width_map * S_HEIGHT / 25,
-			data->high_map * S_HEIGHT / 25);
 	data->minimap = mlx_new_image(data->mlx, data->width_map * S_HEIGHT / 25,
 			data->high_map * S_HEIGHT / 25);
 	data->player = mlx_new_image(data->mlx, data->width_map * S_HEIGHT / 25,
@@ -117,9 +115,5 @@ void	put_minimap(t_data *data)
 	mlx_image_to_window(data->mlx, data->minimap, 0, 0);
 	mlx_image_to_window(data->mlx, data->player,
 		(data->pos_x - 1) * S_HEIGHT / 50, (data->pos_y - 1) * S_HEIGHT / 50);
-	data->raycasting = mlx_new_image(data->mlx, S_WIDTH, S_HEIGHT);
-	if (!data->raycasting)
-		ft_printf("ERROR\n");
-	mlx_image_to_window(data->mlx, data->raycasting, 0, 0);
 	center_minimap(data->minimap, data->player);
 }
