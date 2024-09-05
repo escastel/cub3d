@@ -6,7 +6,7 @@
 /*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 16:33:48 by escastel          #+#    #+#             */
-/*   Updated: 2024/09/05 17:07:21 by escastel         ###   ########.fr       */
+/*   Updated: 2024/09/05 17:24:37 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ void	ray_loop(t_data *data)
 {
 	t_ray	ray;
 	double	angle;
+/* 	double	dist; */
 
 	angle = data->p_angle - (data->fov_rd / 2);
 	correct_angle(angle);
@@ -114,7 +115,9 @@ void	ray_loop(t_data *data)
 	{
 		ray = throw_ray(data, angle);
 		scale_wall(data, ray);
+		/* dist = (S_WIDTH / 2) / tan(data->fov_rd / 2); */
 	 	angle += data->fov_rd / S_WIDTH;
+		correct_angle(angle);
 		data->rays++;
  	}
 }
