@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 14:37:30 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/09/04 16:55:39 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/09/04 18:24:38 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ typedef struct s_data
 	char		**f;
 	char		**c;
 	char		orientation;
+	int			rays;
 	int			nbr_text;
 	int			nbr_player;
 	int			width_map;
@@ -92,7 +93,8 @@ void	player_move(t_data *data);
 
 /*--- RAYCASTING ---*/
 
-t_ray	throw_ray(t_data *data, double angle);
+void	ray_loop(t_data *data);
+void	scale_wall(t_data *data, t_ray ray);
 
 /*--- RAYCASTING UTILS ---*/
 

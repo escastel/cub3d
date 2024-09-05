@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raycasting.c                                       :+:      :+:    :+:   */
+/*   ray_casting.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 16:33:48 by escastel          #+#    #+#             */
-/*   Updated: 2024/09/04 13:08:20 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/09/04 18:15:05 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ static double	search_walls(t_data *data, t_ray ray, char c)
 	return (get_distance(ray, pos));
 }
 
-t_ray	throw_ray(t_data *data, double angle)
+static t_ray	throw_ray(t_data *data, double angle)
 {
 	t_ray	ray;
 	double	distance_x;
@@ -100,4 +100,21 @@ t_ray	throw_ray(t_data *data, double angle)
 			ray.wall_o = 'W';
 	}
 	return (ray);
+}
+
+void	ray_loop(t_data *data)
+{
+	t_ray	ray;
+	double	angle;
+
+	angle = data->p_angle - (data->fov_rd / 2);
+	angle = correct_angle(angle);
+	data->rays = 0;
+	while (data->rays < S_WIDTH)
+	{
+		ray = throw_ray(data, angle);
+		scale_wall(data, ray);
+		angle += data->fov_rd / S_WIDTH;
+		data->rays++;
+	}
 }
