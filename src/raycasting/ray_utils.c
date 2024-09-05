@@ -6,7 +6,7 @@
 /*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 15:11:56 by escastel          #+#    #+#             */
-/*   Updated: 2024/09/05 16:21:44 by escastel         ###   ########.fr       */
+/*   Updated: 2024/09/05 17:02:32 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,12 +71,12 @@ int	collition_walls(t_data *data, t_ray ray, t_coord pos, char c)
 	y = (int)pos.y;
 	if (c == 'x')
 	{
-		if (ray.cross_y.x < 0)
+		if (sin(ray.ray_angle) < 0)
 			y -= 1;
 	}
 	if (c == 'y')
 	{
-		if (ray.cross_x.y < 0)
+		if (cos(ray.ray_angle) < 0)
 			x -= 1;
 	}
 	if (x < 0 || y < 0 || y >= data->high_map || x > data->width_map)
