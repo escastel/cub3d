@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 15:44:23 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/09/04 18:34:40 by escastel         ###   ########.fr       */
+/*   Updated: 2024/09/05 12:36:55 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
-
+/*
 static void	clean_wall(t_data *data)
 {
 	int	x;
@@ -23,13 +23,13 @@ static void	clean_wall(t_data *data)
 		x = 0;
 		while (x < S_WIDTH)
 		{
-			mlx_put_pixel(/*imagen*/, x, y, TRANSPARENT);
-			mlx_put_pixel(/*imagen*/, x, y, TRANSPARENT);
+			mlx_put_pixel(, x, y, TRANSPARENT);
+			mlx_put_pixel(, x, y, TRANSPARENT);
 			x++;
 		}
 		y++;
 	}
-}
+}*/
 
 void	hook(void *param)
 {
