@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:40:53 by escastel          #+#    #+#             */
 /*   Updated: 2024/09/05 13:27:40 by escastel         ###   ########.fr       */
@@ -30,6 +30,8 @@ static void	draw_wall(t_data *data, t_ray ray, double top, double bot)
 	int	color;
 
 	color = get_color(ray);
+	if (color == -1)
+		return ;
 	while (top < bot)
 	{
 		if (!(data->rays < 0 || data->rays >= S_WIDTH
@@ -39,7 +41,7 @@ static void	draw_wall(t_data *data, t_ray ray, double top, double bot)
 	}
 }
 
-static void	draw_floor_sky(t_data *data, t_ray ray, double top, double bot)
+static void	draw_floor_sky(t_data *data, double top, double bot)
 {
 	int	copy;
 
@@ -76,6 +78,6 @@ void	scale_wall(t_data *data, t_ray ray)
 	bot = (S_HEIGHT / 2) + (w_height / 2);
 	if (bot > S_HEIGHT)
 		bot = S_HEIGHT;
-	draw_floor_sky(data, ray, top, bot);
 	draw_wall(data, ray, top, bot);
+	draw_floor_sky(data, top, bot);
 }

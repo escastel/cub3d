@@ -90,6 +90,7 @@ int		get_map(t_data *data, char *str, char *line);
 int		init_game(t_data *data);
 void	put_minimap(t_data *data);
 void	hook(void *param);
+void	player_move(t_data *data);
 
 /*--- RAYCASTING ---*/
 

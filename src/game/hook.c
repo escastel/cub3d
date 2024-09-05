@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 15:44:23 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/09/05 13:28:14 by escastel         ###   ########.fr       */
+/*   Updated: 2024/09/05 12:36:55 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
 
-/* static void	clean_wall(t_data *data)
+/*
+static void	clean_wall(t_data *data)
 {
 	int	x;
 	int	y;
