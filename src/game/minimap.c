@@ -6,7 +6,7 @@
 /*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 16:02:23 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/09/05 14:00:16 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/09/05 14:13:18 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,10 +110,17 @@ void	put_minimap(t_data *data)
 			data->high_map * S_HEIGHT / 25);
 	data->player = mlx_new_image(data->mlx, data->width_map * S_HEIGHT / 25,
 			data->high_map * S_HEIGHT / 25);
+	data->raycasting = mlx_new_image(data->mlx, S_WIDTH, S_HEIGHT);
+	if (!data->minimap || !data->player || !data->raycasting)
+	{
+		ft_printf("Error: Can't create image\n");
+		return ;
+	}
 	paint_minimap(data, data->minimap);
 	paint_player(data, S_HEIGHT / 50, S_HEIGHT / 50);
 	mlx_image_to_window(data->mlx, data->minimap, 0, 0);
 	mlx_image_to_window(data->mlx, data->player,
 		(data->pos_x - 1) * S_HEIGHT / 50, (data->pos_y - 1) * S_HEIGHT / 50);
 	center_minimap(data->minimap, data->player);
+	mlx_image_to_window(data->mlx, data->raycasting, 0, 0);
 }
