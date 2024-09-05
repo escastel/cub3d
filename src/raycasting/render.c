@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:40:53 by escastel          #+#    #+#             */
-/*   Updated: 2024/09/05 13:27:40 by escastel         ###   ########.fr       */
+/*   Updated: 2024/09/05 13:37:01 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ static void	draw_floor_sky(t_data *data, double top, double bot)
 	int	copy;
 
 	copy = 0;
-	(void)ray;
 	while (copy < top) // SKY
 	{
 		if (!(data->rays < 0 || data->rays >= S_WIDTH
