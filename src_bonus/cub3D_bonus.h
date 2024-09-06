@@ -6,7 +6,7 @@
 /*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 14:37:30 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/09/06 16:02:22 by escastel         ###   ########.fr       */
+/*   Updated: 2024/09/06 16:27:30 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ typedef struct s_data
 	char		**c;
 	char		orientation;
 	int			rays;
+	int			m_x;
+	int			m_y;
 	int			nbr_text;
 	int			nbr_player;
 	int			width_map;
