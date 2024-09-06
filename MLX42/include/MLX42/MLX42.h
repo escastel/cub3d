@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MLX42.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anttorre <atormora@gmail.com>              +#+  +:+       +#+        */
+/*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 00:33:01 by W2Wizard          #+#    #+#             */
-/*   Updated: 2023/07/17 15:18:12 by anttorre         ###   ########.fr       */
+/*   Updated: 2024/09/06 12:37:35 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,8 @@ typedef struct xpm
  */
 typedef struct mlx_instance
 {
-	int32_t	x;
-	int32_t	y;
+	double	x;
+	double	y;
 	int32_t	z;
 	bool	enabled;
 }	mlx_instance_t;

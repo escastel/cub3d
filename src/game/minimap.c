@@ -6,7 +6,7 @@
 /*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 16:02:23 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/09/05 14:26:06 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/09/06 11:58:03 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,14 @@ static void	center_minimap(mlx_image_t *minimap, mlx_image_t *player)
 
 	x = 0;
 	y = 0;
-	while (player->instances[0].x + x < S_HEIGHT / 20
-		|| player->instances[0].y + y < S_HEIGHT / 20)
-	{
-		if (player->instances[0].x + x < S_HEIGHT / 20)
-			x++;
-		if (player->instances[0].y + y < S_HEIGHT / 20)
-			y++;
-	}
-	while (player->instances[0].x + x > S_HEIGHT / 20
-		|| player->instances[0].y + y > S_HEIGHT / 20)
-	{
-		if (player->instances[0].x + x > S_HEIGHT / 20)
-			x--;
-		if (player->instances[0].y + y > S_HEIGHT / 20)
-			y--;
-	}
+	while (player->instances[0].x + x < S_HEIGHT / 20)
+		x++;
+	while (player->instances[0].y + y < S_HEIGHT / 20)
+		y++;
+	while (player->instances[0].x + x > S_HEIGHT / 20)
+		x--;
+	while (player->instances[0].y + y > S_HEIGHT / 20)
+		y--;
 	player->instances[0].x += x + S_HEIGHT / 50;
 	player->instances[0].y += y + S_HEIGHT / 50;
 	minimap->instances[0].x += x + S_HEIGHT / 50;
@@ -52,9 +44,7 @@ static void	paint_square(mlx_image_t *minimap, int i, int j, int color)
 	{
 		i = size_i - S_HEIGHT / 50;
 		while (i <= size_i)
-		{
 			mlx_put_pixel(minimap, i++, j, color);
-		}
 		j++;
 	}
 }
@@ -70,10 +60,7 @@ static void	paint_player(t_data *data, int i, int j)
 	{
 		i = size_i - (S_HEIGHT / 50 / 2);
 		while (i < size_i)
-		{
-			mlx_put_pixel(data->player, i, j, WHITE);
-			i++;
-		}
+			mlx_put_pixel(data->player, i++, j, WHITE);
 		j++;
 	}
 }
@@ -117,7 +104,8 @@ void	put_minimap(t_data *data)
 		return ;
 	}
 	paint_minimap(data, data->minimap);
-	paint_player(data, S_HEIGHT / 50, S_HEIGHT / 50);
+	paint_player(data, S_HEIGHT / 50 - (S_HEIGHT / 50 / 4),
+		S_HEIGHT / 50 - (S_HEIGHT / 50 / 4));
 	mlx_image_to_window(data->mlx, data->minimap, 0, 0);
 	mlx_image_to_window(data->mlx, data->player,
 		(data->pos_x - 1) * S_HEIGHT / 50, (data->pos_y - 1) * S_HEIGHT / 50);
