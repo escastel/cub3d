@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game_loop.c                                        :+:      :+:    :+:   */
+/*   init_struct_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/25 11:59:56 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/09/06 15:50:22 by escastel         ###   ########.fr       */
+/*   Created: 2024/07/23 16:49:13 by escastel          #+#    #+#             */
+/*   Updated: 2024/09/06 16:00:22 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3D.h"
+#include "../cub3D_bonus.h"
 
-int	init_game(t_data *data)
+void	init_data(t_data *d)
 {
-	data->p_angle = get_player_angle(data->orientation);
-	data->mlx = mlx_init(S_WIDTH, S_HEIGHT, "cub3D", false);
-	if (!data->mlx)
-		return (EXIT_FAILURE);
-	put_minimap(data);
-	mlx_loop_hook(data->mlx, &hook, data);
-	mlx_loop(data->mlx);
-	mlx_terminate(data->mlx);
-	return (EXIT_SUCCESS);
+	d->map = NULL;
+	d->no = NULL;
+	d->so = NULL;
+	d->we = NULL;
+	d->ea = NULL;
+	d->f = NULL;
+	d->c = NULL;
+	d->nbr_text = 0;
+	d->nbr_player = 0;
+	d->width_map = 0;
+	d->high_map = 0;
+	d->fov_rd = FOV * (M_PI / 180);
+	d->pos_x = 0;
+	d->pos_y = 0;
+	d->p_angle = 0;
 }
