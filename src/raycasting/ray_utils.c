@@ -6,7 +6,7 @@
 /*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 15:11:56 by escastel          #+#    #+#             */
-/*   Updated: 2024/09/05 18:58:06 by escastel         ###   ########.fr       */
+/*   Updated: 2024/09/06 12:10:55 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,15 +50,11 @@ double	correct_angle(double angle)
 double	get_distance(t_ray ray, t_coord wall)
 {
 	t_coord	diff;
-	/* double	delta;
-	double	distance; */
 	double	hypotenuse;
 
 	diff.x = wall.x - ray.origin.x;
 	diff.y = wall.y - ray.origin.y;
 	hypotenuse = sqrt(pow(diff.x, 2) + pow(diff.y, 2));
-	/* delta = ray.p_angle - ray.ray_angle;
-	distance = hypotenuse * cos(delta); */
 	return (hypotenuse);
 }
 
