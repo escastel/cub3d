@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 15:53:47 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/09/05 13:28:28 by escastel         ###   ########.fr       */
+/*   Updated: 2024/09/06 11:37:53 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,18 @@ static void	move(t_data *data, double x, double y)
 	fract_y += y;
 	int_x = fract_x;
 	int_y = fract_y;
-	data->pos_x += int_x / (S_HEIGHT / 50 + 0.0);
-	data->minimap->instances[0].x -= int_x;
-	fract_x -= int_x;
-	data->pos_y += int_y / (S_HEIGHT / 50 + 0.0);
-	data->minimap->instances[0].y -= int_y;
-	fract_y -= int_y;
+	if (int_x != 0)
+	{
+		data->pos_x += int_x / (S_HEIGHT / 50 + 0.0);
+		data->minimap->instances[0].x -= int_x;
+		fract_x -= int_x;
+	}
+	if (int_y != 0)
+	{
+		data->pos_y += int_y / (S_HEIGHT / 50 + 0.0);
+		data->minimap->instances[0].y -= int_y;
+		fract_y -= int_y;
+	}
 }
 
 void	player_move(t_data *data)
