@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 15:11:56 by escastel          #+#    #+#             */
-/*   Updated: 2024/09/06 12:10:55 by escastel         ###   ########.fr       */
+/*   Updated: 2024/09/06 12:43:52 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	collition_walls(t_data *data, t_ray ray, t_coord pos, char c)
 	}
 	if (x < 0 || y < 0 || y >= data->high_map || x > data->width_map)
 		return (1);
-	if (data->map[y][x] == '1')
+	if (data->map[y][x] == '1' || data->map[y][x] == ' ')
 		return (1);
 	return (0);
 }
