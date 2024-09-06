@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 15:53:47 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/09/06 11:37:53 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/09/06 15:41:42 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,5 @@ void	player_move(t_data *data)
 		data->p_angle -= 1.0 * (M_PI / 180);
 	if (mlx_is_key_down(data->mlx, MLX_KEY_RIGHT))
 		data->p_angle += 1.0 * (M_PI / 180);
-	if (data->p_angle < 0 * (M_PI / 180))
-		data->p_angle += 360 * (M_PI / 180);
-	if (data->p_angle >= 360 * (M_PI / 180))
-		data->p_angle -= 360 * (M_PI / 180);
+	data->p_angle = correct_angle(data->p_angle);
 }
