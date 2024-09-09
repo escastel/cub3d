@@ -43,6 +43,7 @@ SRC_BONUS = src_bonus/main_bonus.c\
 		src_bonus/game_bonus/hook_bonus.c\
 		src_bonus/game_bonus/minimap_bonus.c\
 		src_bonus/game_bonus/player_bonus.c\
+		src_bonus/game_bonus/border_minimap_bonus.c\
 
 
 OBJ = $(SRC:.c=.o)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 16:02:23 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/09/06 16:00:30 by escastel         ###   ########.fr       */
+/*   Updated: 2024/09/09 12:05:38 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,5 +110,8 @@ void	put_minimap(t_data *data)
 	mlx_image_to_window(data->mlx, data->player,
 		(data->pos_x - 1) * S_HEIGHT / 50, (data->pos_y - 1) * S_HEIGHT / 50);
 	center_minimap(data->minimap, data->player);
+	data->border = mlx_new_image(data->mlx, S_WIDTH, S_HEIGHT);
+	draw_border(data);
+	mlx_image_to_window(data->mlx, data->border, 0, 0);
 	mlx_image_to_window(data->mlx, data->raycasting, 0, 0);
 }
