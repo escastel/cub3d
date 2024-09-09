@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 14:37:30 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/09/06 16:27:30 by escastel         ###   ########.fr       */
+/*   Updated: 2024/09/09 12:03:19 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ typedef struct s_data
 	mlx_image_t	*minimap;
 	mlx_image_t	*player;
 	mlx_image_t	*raycasting;
+	mlx_image_t *border;
 }			t_data;
 
 /*--- INIT_STRUCT ---*/
@@ -92,6 +93,7 @@ int		get_map(t_data *data, char *str, char *line);
 /*--- GAME ---*/
 int		init_game(t_data *data);
 void	put_minimap(t_data *data);
+void	draw_border(t_data *data);
 void	hook(void *param);
 void	player_move(t_data *data);
 
