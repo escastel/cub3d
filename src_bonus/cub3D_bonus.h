@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 14:37:30 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/09/09 12:03:19 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/09/09 15:58:33 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ int		get_map(t_data *data, char *str, char *line);
 
 /*--- GAME ---*/
 int		init_game(t_data *data);
-void	put_minimap(t_data *data);
+void	draw_map(t_data *data);
 void	draw_border(t_data *data);
 void	hook(void *param);
 void	player_move(t_data *data);
