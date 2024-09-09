@@ -6,7 +6,7 @@
 /*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 14:37:30 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/09/06 13:16:09 by escastel         ###   ########.fr       */
+/*   Updated: 2024/09/09 15:54:19 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@
 # define M_PI			3.14159265358979323846
 # define S_WIDTH		1280
 # define S_HEIGHT		960
-# define PLAYER_SPEED	4
-# define ROTATION_SPEED	0.045
 # define BLACK 0x000000ff
 # define PINK 0xF8A4A7ff
 # define TRANSPARENT 0x00000000
@@ -66,8 +64,6 @@ typedef struct s_data
 	double		pos_y;
 	double		p_angle;
 	mlx_t		*mlx;
-	mlx_image_t	*minimap;
-	mlx_image_t	*player;
 	mlx_image_t	*raycasting;
 }			t_data;
 
@@ -89,7 +85,7 @@ int		get_map(t_data *data, char *str, char *line);
 
 /*--- GAME ---*/
 int		init_game(t_data *data);
-void	put_minimap(t_data *data);
+void	draw_map(t_data *data);
 void	hook(void *param);
 void	player_move(t_data *data);
 
