@@ -27,7 +27,7 @@ SRC =	src/main.c\
 		src/raycasting/render.c\
 		src/game/game_loop.c\
 		src/game/hook.c\
-		src/game/minimap.c\
+		src/game/draw_map.c\
 		src/game/player.c\
 
 SRC_BONUS = src_bonus/main_bonus.c\
