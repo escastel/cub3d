@@ -6,7 +6,7 @@
 /*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 15:44:23 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/09/06 12:02:44 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/09/09 13:28:57 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	clean_wall(t_data *data)
 		}
 		y++;
 	}
-}*/                
+}*/
 
 void	hook(void *param)
 {
