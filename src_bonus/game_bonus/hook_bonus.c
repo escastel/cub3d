@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 15:44:23 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/09/06 16:37:31 by escastel         ###   ########.fr       */
+/*   Updated: 2024/09/09 13:29:41 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,15 @@ static void	clean_wall(t_data *data)
 		}
 		y++;
 	}
-}*/                
+}*/
 
 static void	move_camara_mouse(t_data *data)
 {
 	mlx_set_cursor_mode(data->mlx, 0x00034002);
 	mlx_get_mouse_pos(data->mlx, &data->m_x, &data->m_y);
-	data->p_angle += correct_angle(((data->m_x - (S_WIDTH / 2)) / 50) * (M_PI / 180));
-	mlx_set_mouse_pos(data->mlx, S_WIDTH / 2, S_HEIGHT / 2);	
+	data->p_angle += correct_angle(((data->m_x - (S_WIDTH / 2)) / 50)
+			* (M_PI / 180));
+	mlx_set_mouse_pos(data->mlx, S_WIDTH / 2, S_HEIGHT / 2);
 }
 
 void	hook(void *param)
