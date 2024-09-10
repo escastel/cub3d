@@ -3,14 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   player_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 15:53:47 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/09/06 16:00:32 by escastel         ###   ########.fr       */
+/*   Updated: 2024/09/10 12:35:03 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D_bonus.h"
+
+static void	fix_collisions(t_data *data, double x, double y)
+{
+	if (data->map[(int)data->pos_y][(int)(data->pos_x + 0.2)] == '1'
+		|| data->map[(int)data->pos_y][(int)(data->pos_x - 0.2)] == '1')
+	{
+		data->pos_x -= x / (S_HEIGHT / 50);
+		data->minimap->instances[0].x += x;
+	}
+	if (data->map[(int)(data->pos_y + 0.2)][(int)(data->pos_x)] == '1'
+		|| data->map[(int)(data->pos_y - 0.2)][(int)(data->pos_x)] == '1')
+	{
+		data->pos_y -= y / (S_HEIGHT / 50);
+		data->minimap->instances[0].y += y;
+	}
+}
 
 static void	move(t_data *data, double x, double y)
 {
@@ -37,6 +53,7 @@ static void	move(t_data *data, double x, double y)
 		data->minimap->instances[0].y -= int_y;
 		fract_y -= int_y;
 	}
+	fix_collisions(data, int_x, int_y);
 }
 
 void	player_move(t_data *data)
