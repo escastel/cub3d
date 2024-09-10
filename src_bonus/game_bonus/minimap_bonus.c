@@ -6,7 +6,7 @@
 /*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 16:02:23 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/09/10 12:18:01 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/09/10 17:58:04 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,15 +76,18 @@ static void	paint_minimap(t_data *data, mlx_image_t *minimap)
 		j = 0;
 		while (data->map[i][j])
 		{
-			if (data->map[i][j] == '1')
-				paint_square(minimap, j * S_HEIGHT / 50,
-					i * S_HEIGHT / 50, BLACK);
-			else if (data->map[i][j] == ' ')
-				paint_square(minimap, j * S_HEIGHT / 50,
-					i * S_HEIGHT / 50, TRANSPARENT);
-			else
-				paint_square(minimap, j * S_HEIGHT / 50,
-					i * S_HEIGHT / 50, PINK);
+			if (!(i > S_HEIGHT / 50 && i < S_HEIGHT / 50 * 8 && j > S_HEIGHT / 50 && j < S_HEIGHT / 50 * 8))
+			{
+				if (data->map[i][j] == '1')
+					paint_square(minimap, j * S_HEIGHT / 50,
+						i * S_HEIGHT / 50, BLACK);
+				else if (data->map[i][j] == ' ')
+					paint_square(minimap, j * S_HEIGHT / 50,
+						i * S_HEIGHT / 50, TRANSPARENT);
+				else
+					paint_square(minimap, j * S_HEIGHT / 50,
+						i * S_HEIGHT / 50, PINK);	
+			}
 			j++;
 		}
 		i++;
@@ -97,7 +100,6 @@ void	draw_map(t_data *data)
 			data->high_map * S_HEIGHT / 25);
 	data->player = mlx_new_image(data->mlx, data->width_map * S_HEIGHT / 25,
 			data->high_map * S_HEIGHT / 25);
-	data->border = mlx_new_image(data->mlx, S_WIDTH, S_HEIGHT);
 	data->raycasting = mlx_new_image(data->mlx, S_WIDTH, S_HEIGHT);
 	if (!data->minimap || !data->player || !data->raycasting)
 	{
@@ -111,7 +113,6 @@ void	draw_map(t_data *data)
 	mlx_image_to_window(data->mlx, data->player,
 		(data->pos_x - 1) * S_HEIGHT / 50, (data->pos_y - 1) * S_HEIGHT / 50);
 	center_minimap(data->minimap, data->player);
-	draw_border(data);
-	mlx_image_to_window(data->mlx, data->border, 0, 0);
 	mlx_image_to_window(data->mlx, data->raycasting, 0, 0);
+	draw_border(data);
 }
