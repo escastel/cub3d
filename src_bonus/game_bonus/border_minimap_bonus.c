@@ -6,7 +6,7 @@
 /*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 11:52:46 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/09/09 16:04:32 by escastel         ###   ########.fr       */
+/*   Updated: 2024/09/10 16:13:25 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ void	draw_border(t_data *data)
 		{
 			if ((j < S_HEIGHT / 50 * 1.2 && i <= S_HEIGHT / 50 * 8.2)
 				|| (i < S_HEIGHT / 50 * 1.2 && j <= S_HEIGHT / 50 * 8.2))
-				mlx_put_pixel (data->border, i, j, BLACK);
+				mlx_put_pixel (data->raycasting, i, j, BLACK);
 			if ((j > S_HEIGHT / 50 && i > S_HEIGHT / 50)
 				&& (j >= S_HEIGHT / 50 * 8 || i >= S_HEIGHT / 50 * 8)
 				&& (j <= S_HEIGHT / 50 * 8.2 && i <= S_HEIGHT / 50 * 8.2))
-				mlx_put_pixel(data->border, i, j, BLACK);
+				mlx_put_pixel(data->raycasting, i, j, BLACK);
 			j++;
 		}
 		i++;

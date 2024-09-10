@@ -6,7 +6,7 @@
 /*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:40:53 by escastel          #+#    #+#             */
-/*   Updated: 2024/09/06 16:00:08 by escastel         ###   ########.fr       */
+/*   Updated: 2024/09/10 16:34:09 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 static int	get_color(t_ray ray)
 {
 	if (ray.wall_o == 'N')
-		return (0x007F0040); // GREEN
+		return (0x00FF00BF); // GREEN
 	if (ray.wall_o == 'S') // BLUE
-		return (0xADD8E640); 
+		return (0x0000FFBF); 
 	if (ray.wall_o == 'W') //PINK
-		return (0xFFC0CB40);
+		return (0xFFFF00BF);
 	if (ray.wall_o == 'E') // RED
-		return (0xFF000040);
+		return (0xFF0000BF);
 	return (-1);
 }
 
@@ -35,8 +35,11 @@ static void	draw_wall(t_data *data, t_ray ray, double top, double bot)
 	while (top < bot)
 	{
 		if (!(data->rays < 0 || data->rays >= S_WIDTH
-				|| top < 0 || top >= S_HEIGHT))
-			mlx_put_pixel(data->raycasting, data->rays, top, color);
+			|| top < 0 || top >= S_HEIGHT))
+			{
+				if (!(top > S_HEIGHT / 50 && top < S_HEIGHT / 50 * 8.2 && data->rays > S_HEIGHT / 50 && data->rays < S_HEIGHT / 50 * 8.2))
+					mlx_put_pixel(data->raycasting, data->rays, top, color);
+			}
 		top++;
 	}
 }
@@ -50,7 +53,10 @@ static void	draw_floor_sky(t_data *data, double top, double bot)
 	{
 		if (!(data->rays < 0 || data->rays >= S_WIDTH
 				|| copy < 0 || copy >= S_HEIGHT))
-			mlx_put_pixel(data->raycasting, data->rays, copy, 0x80008080);
+				{
+					if (!(copy > S_HEIGHT / 50 && copy < S_HEIGHT / 50 * 8.2 && data->rays > S_HEIGHT / 50 && data->rays < S_HEIGHT / 50 * 8.2))
+						mlx_put_pixel(data->raycasting, data->rays, copy, 0x00FFFFBF);
+				}
 		copy++;
 	}
 	copy = bot;
@@ -58,7 +64,10 @@ static void	draw_floor_sky(t_data *data, double top, double bot)
 	{
 		if (!(data->rays < 0 || data->rays >= S_WIDTH
 				|| copy < 0 || copy >= S_HEIGHT))
-			mlx_put_pixel(data->raycasting, data->rays, copy, 0xFFA50080);
+				{
+					if (!(copy > S_HEIGHT / 50 && copy < S_HEIGHT / 50 * 8.2 && data->rays > S_HEIGHT / 50 && data->rays < S_HEIGHT / 50 * 8.2))
+						mlx_put_pixel(data->raycasting, data->rays, copy, 0xFFC0CBBF);
+				}
 		copy++;
 	}
 }

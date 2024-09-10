@@ -6,7 +6,7 @@
 /*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 16:02:23 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/09/10 12:18:01 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/09/10 16:13:56 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void	draw_map(t_data *data)
 			data->high_map * S_HEIGHT / 25);
 	data->player = mlx_new_image(data->mlx, data->width_map * S_HEIGHT / 25,
 			data->high_map * S_HEIGHT / 25);
-	data->border = mlx_new_image(data->mlx, S_WIDTH, S_HEIGHT);
+	/* data->border = mlx_new_image(data->mlx, S_WIDTH, S_HEIGHT); */
 	data->raycasting = mlx_new_image(data->mlx, S_WIDTH, S_HEIGHT);
 	if (!data->minimap || !data->player || !data->raycasting)
 	{
@@ -112,6 +112,6 @@ void	draw_map(t_data *data)
 		(data->pos_x - 1) * S_HEIGHT / 50, (data->pos_y - 1) * S_HEIGHT / 50);
 	center_minimap(data->minimap, data->player);
 	draw_border(data);
-	mlx_image_to_window(data->mlx, data->border, 0, 0);
+	/* mlx_image_to_window(data->mlx, data->border, 0, 0); */
 	mlx_image_to_window(data->mlx, data->raycasting, 0, 0);
 }
