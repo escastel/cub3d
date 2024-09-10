@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 16:02:23 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/09/09 16:15:43 by escastel         ###   ########.fr       */
+/*   Updated: 2024/09/10 12:18:01 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ void	draw_map(t_data *data)
 		ft_printf("Error: Can't create image\n");
 		return ;
 	}
-	paint_minimap(data, data->minimap); 
+	paint_minimap(data, data->minimap);
 	paint_player(data, S_HEIGHT / 50 - (S_HEIGHT / 50 / 4),
 		S_HEIGHT / 50 - (S_HEIGHT / 50 / 4));
 	mlx_image_to_window(data->mlx, data->minimap, 0, 0);
