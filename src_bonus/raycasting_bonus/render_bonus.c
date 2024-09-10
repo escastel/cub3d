@@ -6,7 +6,7 @@
 /*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:40:53 by escastel          #+#    #+#             */
-/*   Updated: 2024/09/10 16:34:09 by escastel         ###   ########.fr       */
+/*   Updated: 2024/09/10 17:58:35 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 static int	get_color(t_ray ray)
 {
 	if (ray.wall_o == 'N')
-		return (0x00FF00BF); // GREEN
+		return (0x007F007F); // GREEN
 	if (ray.wall_o == 'S') // BLUE
-		return (0x0000FFBF); 
+		return (0x007F007F); 
 	if (ray.wall_o == 'W') //PINK
-		return (0xFFFF00BF);
+		return (0x007F007F);
 	if (ray.wall_o == 'E') // RED
-		return (0xFF0000BF);
+		return (0x007F007F);
 	return (-1);
 }
 
@@ -55,7 +55,7 @@ static void	draw_floor_sky(t_data *data, double top, double bot)
 				|| copy < 0 || copy >= S_HEIGHT))
 				{
 					if (!(copy > S_HEIGHT / 50 && copy < S_HEIGHT / 50 * 8.2 && data->rays > S_HEIGHT / 50 && data->rays < S_HEIGHT / 50 * 8.2))
-						mlx_put_pixel(data->raycasting, data->rays, copy, 0x00FFFFBF);
+						mlx_put_pixel(data->raycasting, data->rays, copy, 0x00FFFF);
 				}
 		copy++;
 	}
@@ -66,7 +66,7 @@ static void	draw_floor_sky(t_data *data, double top, double bot)
 				|| copy < 0 || copy >= S_HEIGHT))
 				{
 					if (!(copy > S_HEIGHT / 50 && copy < S_HEIGHT / 50 * 8.2 && data->rays > S_HEIGHT / 50 && data->rays < S_HEIGHT / 50 * 8.2))
-						mlx_put_pixel(data->raycasting, data->rays, copy, 0xFFC0CBBF);
+						mlx_put_pixel(data->raycasting, data->rays, copy, 0xFFC0CB);
 				}
 		copy++;
 	}
