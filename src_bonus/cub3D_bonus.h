@@ -6,7 +6,7 @@
 /*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 14:37:30 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/09/09 15:58:33 by escastel         ###   ########.fr       */
+/*   Updated: 2024/09/11 13:40:56 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ typedef struct s_data
 	mlx_image_t	*minimap;
 	mlx_image_t	*player;
 	mlx_image_t	*raycasting;
-	mlx_image_t *border;
 }			t_data;
 
 /*--- INIT_STRUCT ---*/

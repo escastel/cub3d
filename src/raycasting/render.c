@@ -6,7 +6,7 @@
 /*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:40:53 by escastel          #+#    #+#             */
-/*   Updated: 2024/09/06 12:08:47 by escastel         ###   ########.fr       */
+/*   Updated: 2024/09/11 13:25:13 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	get_color(t_ray ray)
 	if (ray.wall_o == 'N')
 		return (0x007F0040); // GREEN
 	if (ray.wall_o == 'S') // BLUE
-		return (0xADD8E640); 
+		return (0xADD8E640);
 	if (ray.wall_o == 'W') //PINK
 		return (0xFFC0CB40);
 	if (ray.wall_o == 'E') // RED
@@ -77,6 +77,6 @@ void	scale_wall(t_data *data, t_ray ray)
 	bot = (S_HEIGHT / 2) + (w_height / 2);
 	if (bot > S_HEIGHT)
 		bot = S_HEIGHT;
- 	draw_wall(data, ray, top, bot);
+	draw_wall(data, ray, top, bot);
 	draw_floor_sky(data, top, bot);
 }
