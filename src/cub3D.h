@@ -6,7 +6,7 @@
 /*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 14:37:30 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/09/11 14:57:50 by escastel         ###   ########.fr       */
+/*   Updated: 2024/09/11 19:41:04 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,31 +42,39 @@ typedef struct s_ray
 	t_coord	origin;
 	t_coord	cross_x;
 	t_coord	cross_y;
+	t_coord	wall_x;
+	t_coord	wall_y;
+	t_coord	collition;
 }			t_ray;
 
 typedef struct s_data
 {
-	char		**map;
-	char		**no;
-	char		**so;
-	char		**we;
-	char		**ea;
-	char		**f;
-	char		**c;
-	char		orientation;
-	int			rays;
-	int			floor;
-	int			sky;
-	int			nbr_text;
-	int			nbr_player;
-	int			width_map;
-	int			high_map;
-	double		fov_rd;
-	double		pos_x;
-	double		pos_y;
-	double		p_angle;
-	mlx_t		*mlx;
-	mlx_image_t	*raycasting;
+	char			**map;
+	char			**no;
+	char			**so;
+	char			**we;
+	char			**ea;
+	char			**f;
+	char			**c;
+	char			orientation;
+	int				rays;
+	int				floor;
+	int				sky;
+	int				nbr_text;
+	int				nbr_player;
+	int				width_map;
+	int				high_map;
+	double			w_height;
+	double			fov_rd;
+	double			pos_x;
+	double			pos_y;
+	double			p_angle;
+	mlx_t			*mlx;
+	mlx_image_t		*raycasting;
+	mlx_texture_t	*wall_n;
+	mlx_texture_t	*wall_s;
+	mlx_texture_t	*wall_w;
+	mlx_texture_t	*wall_e;
 }			t_data;
 
 /*--- INIT_STRUCT ---*/
@@ -95,15 +103,18 @@ void	player_move(t_data *data);
 /*--- RAYCASTING ---*/
 
 void	ray_loop(t_data *data);
-void	scale_wall(t_data *data, t_ray ray);
-
-/*--- RAYCASTING UTILS ---*/
-
 double	get_player_angle(char c);
 double	correct_angle(double angle);
 double	orientation(double angle, char c);
 double	get_distance(t_ray ray, t_coord wall);
 int		collition_walls(t_data *data, t_ray ray, t_coord pos, char c);
+
+/*--- RENDER ---*/
+
+void			scale_wall(t_data *data, t_ray ray);
+mlx_texture_t	*get_wall(t_data *data, char o);
+double			get_x(t_ray ray, mlx_texture_t *tx);
+int				get_color(mlx_texture_t *tx, int x, int y);
 
 /*--- CUB3D UTILS ---*/
 

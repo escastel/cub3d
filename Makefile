@@ -26,6 +26,7 @@ SRC =	src/main.c\
 		src/raycasting/ray_casting.c\
 		src/raycasting/ray_utils.c\
 		src/raycasting/render.c\
+		src/raycasting/utils_wall.c\
 		src/game/game_loop.c\
 		src/game/hook.c\
 		src/game/draw_map.c\
