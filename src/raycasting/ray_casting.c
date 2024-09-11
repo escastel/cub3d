@@ -6,7 +6,7 @@
 /*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 16:33:48 by escastel          #+#    #+#             */
-/*   Updated: 2024/09/11 13:24:20 by escastel         ###   ########.fr       */
+/*   Updated: 2024/09/11 19:41:42 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,15 @@ static double	search_walls(t_data *data, t_ray ray, char c)
 		{
 			pos.x += ray.cross_x.x;
 			pos.y += ray.cross_x.y;
+			ray.wall_x.x = pos.x;
+			ray.wall_x.y = pos.y;
 		}
 		if (c == 'y')
 		{
 			pos.x += ray.cross_y.x;
 			pos.y += ray.cross_y.y;
+			ray.wall_y.x = pos.x;
+			ray.wall_y.y = pos.y;
 		}
 	}
 	return (get_distance(ray, pos));
@@ -85,6 +89,7 @@ static t_ray	throw_ray(t_data *data, double angle)
 	distance_y = search_walls(data, ray, 'y');
 	if (distance_x < distance_y)
 	{
+		ray.collition = ray.wall_x;
 		ray.distance = distance_x;
 		if (ray.cross_x.y < 0)
 			ray.wall_o = 'S';
@@ -93,6 +98,7 @@ static t_ray	throw_ray(t_data *data, double angle)
 	}
 	else
 	{
+		ray.collition = ray.wall_y;
 		ray.distance = distance_y;
 		if (ray.cross_y.x < 0)
 			ray.wall_o = 'E';
