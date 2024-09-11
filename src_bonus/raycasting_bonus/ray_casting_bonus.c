@@ -6,7 +6,7 @@
 /*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 16:33:48 by escastel          #+#    #+#             */
-/*   Updated: 2024/09/06 15:59:47 by escastel         ###   ########.fr       */
+/*   Updated: 2024/09/11 13:28:52 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static double	search_walls(t_data *data, t_ray ray, char c)
 {
 	t_coord	pos;
 
-	pos = first_step(ray, c);  
+	pos = first_step(ray, c);
 	while (!collition_walls(data, ray, pos, c))
 	{
 		if (c == 'x')
@@ -108,15 +108,15 @@ void	ray_loop(t_data *data)
 	double	angle;
 
 	angle = data->p_angle - (data->fov_rd / 2);
-	angle = correct_angle(angle) ;
+	angle = correct_angle(angle);
 	data->rays = 0;
- 	while (data->rays < S_WIDTH)
+	while (data->rays < S_WIDTH)
 	{
 		ray = throw_ray(data, angle);
 		scale_wall(data, ray);
-		angle = correct_angle(angle); 
+		angle = correct_angle(angle);
 		angle += data->fov_rd / S_WIDTH;
-		angle = correct_angle(angle); 
+		angle = correct_angle(angle);
 		data->rays++;
- 	}
+	}
 }
