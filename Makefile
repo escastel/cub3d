@@ -18,8 +18,9 @@ LIB_SYS = -lm -Iinclude -lglfw -L "/Users/$(USER)/.brew/opt/glfw/lib/"
 
 SRC =	src/main.c\
 		src/init_struct/init_struct.c\
-		src/utils/get_map.c\
 		src/utils/cub3D_utils.c\
+		src/parser/get_map.c\
+		src/parser/save_colors.c\
 		src/parser/check_map.c\
 		src/parser/check_arguments.c\
 		src/raycasting/ray_casting.c\
@@ -32,8 +33,9 @@ SRC =	src/main.c\
 
 SRC_BONUS = src_bonus/main_bonus.c\
 		src_bonus/init_struct_bonus/init_struct_bonus.c\
-		src_bonus/utils_bonus/get_map_bonus.c\
 		src_bonus/utils_bonus/cub3D_utils_bonus.c\
+		src_bonus/parser_bonus/get_map_bonus.c\
+		src_bonus/parser_bonus/save_colors_bonus.c\
 		src_bonus/parser_bonus/check_map_bonus.c\
 		src_bonus/parser_bonus/check_arguments_bonus.c\
 		src_bonus/raycasting_bonus/ray_casting_bonus.c\

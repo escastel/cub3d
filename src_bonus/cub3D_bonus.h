@@ -6,7 +6,7 @@
 /*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 14:37:30 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/09/11 13:40:56 by escastel         ###   ########.fr       */
+/*   Updated: 2024/09/11 15:11:21 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ typedef struct s_data
 	char		**f;
 	char		**c;
 	char		orientation;
+	int			floor;
+	int			sky;
 	int			rays;
 	int			m_x;
 	int			m_y;
@@ -79,6 +81,7 @@ void	init_data(t_data *d);
 
 /*--- PARSER ---*/
 
+int		save_colors(t_data	*data);
 int		check_arg(char *str);
 int		check_colors(char *str, int flag);
 int		check_digit(char *str);

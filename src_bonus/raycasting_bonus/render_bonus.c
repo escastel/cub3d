@@ -6,7 +6,7 @@
 /*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:40:53 by escastel          #+#    #+#             */
-/*   Updated: 2024/09/11 13:38:19 by escastel         ###   ########.fr       */
+/*   Updated: 2024/09/11 15:11:13 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static void	draw_floor_sky(t_data *data, double top, double bot, int copy)
 		{
 			if (!(data->rays > S_HEIGHT / 50 && data->rays < S_HEIGHT / 50 * 8.2
 					&& copy > S_HEIGHT / 50 && copy < S_HEIGHT / 50 * 8.2))
-				mlx_put_pixel(data->raycasting, data->rays, copy, 0x00FFFF);
+				mlx_put_pixel(data->raycasting, data->rays, copy, data->sky);
 		}
 		copy++;
 	}
@@ -67,7 +67,7 @@ static void	draw_floor_sky(t_data *data, double top, double bot, int copy)
 		{
 			if (!(data->rays > S_HEIGHT / 50 && data->rays < S_HEIGHT / 50 * 8.2
 					&& copy > S_HEIGHT / 50 && copy < S_HEIGHT / 50 * 8.2))
-				mlx_put_pixel(data->raycasting, data->rays, copy, 0xFFC0CB);
+				mlx_put_pixel(data->raycasting, data->rays, copy, data->floor);
 		}
 		copy++;
 	}

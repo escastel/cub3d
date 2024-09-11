@@ -6,7 +6,7 @@
 /*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 14:37:30 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/09/09 15:54:19 by escastel         ###   ########.fr       */
+/*   Updated: 2024/09/11 14:57:50 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@
 # define M_PI			3.14159265358979323846
 # define S_WIDTH		1280
 # define S_HEIGHT		960
-# define BLACK 0x000000ff
-# define PINK 0xF8A4A7ff
-# define TRANSPARENT 0x00000000
-# define WHITE 0xffffffff
+# define PINK 			0xF8A4A7ff
+# define BLACK 			0x000000ff
+# define WHITE 			0xffffffff
+# define TRANSPARENT 	0x00000000
 
 typedef struct s_coord
 {
@@ -55,12 +55,14 @@ typedef struct s_data
 	char		**c;
 	char		orientation;
 	int			rays;
+	int			floor;
+	int			sky;
 	int			nbr_text;
 	int			nbr_player;
 	int			width_map;
 	int			high_map;
-	double		fov_rd;	// FOV EN RADIANES
-	double		pos_x;	// START POSITION
+	double		fov_rd;
+	double		pos_x;
 	double		pos_y;
 	double		p_angle;
 	mlx_t		*mlx;
@@ -78,6 +80,7 @@ int		check_colors(char *str, int flag);
 int		check_digit(char *str);
 int		check_map(t_data *data);
 int		check_close_map(t_data *data, int i);
+int		save_colors(t_data	*data);
 
 /*--- READ MAP ---*/
 

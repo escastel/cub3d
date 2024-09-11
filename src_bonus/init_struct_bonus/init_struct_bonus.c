@@ -6,7 +6,7 @@
 /*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 16:49:13 by escastel          #+#    #+#             */
-/*   Updated: 2024/09/06 16:00:22 by escastel         ###   ########.fr       */
+/*   Updated: 2024/09/11 15:10:52 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	init_data(t_data *d)
 	d->ea = NULL;
 	d->f = NULL;
 	d->c = NULL;
+	d->floor = 0;
+	d->sky = 0;
 	d->nbr_text = 0;
 	d->nbr_player = 0;
 	d->width_map = 0;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 14:36:34 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/09/04 18:16:42 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/09/11 14:44:16 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	main(int argc, char **argv)
 		return (free_all(data), EXIT_FAILURE);
 	if (check_map(data) == 1)
 		return (free_all(data), EXIT_FAILURE);
+	save_colors(data);
 	if (init_game(data) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	free_all(data);
