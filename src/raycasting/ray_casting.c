@@ -6,7 +6,7 @@
 /*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 16:33:48 by escastel          #+#    #+#             */
-/*   Updated: 2024/09/11 19:41:42 by escastel         ###   ########.fr       */
+/*   Updated: 2024/09/12 20:06:39 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ static t_ray	init_ray(t_data *data, double angle)
 	ray.origin.y = data->pos_y;
 	ray.cross_x.y = orientation(angle, 'y');
 	ray.cross_y.x = orientation(angle, 'x');
-	ray.cross_x.x = ray.cross_x.y / tan(angle);
-	ray.cross_y.y = ray.cross_y.x * tan(angle);
+	ray.cross_x.x = ray.cross_x.y / tan(correct_angle(angle));
+	ray.cross_y.y = ray.cross_y.x * tan(correct_angle(angle));
 	return (ray);
 }
 
@@ -40,7 +40,7 @@ static t_coord	first_step(t_ray ray, char c)
 			pos.y = ceil(pos.y);
 		else
 			pos.y = floor(pos.y);
-		pos.x += (pos.y - ray.origin.y) / tan(ray.ray_angle);
+		pos.x += (pos.y - ray.origin.y) / tan(correct_angle(ray.ray_angle));
 	}
 	if (c == 'y')
 	{
@@ -48,7 +48,7 @@ static t_coord	first_step(t_ray ray, char c)
 			pos.x = ceil(pos.x);
 		else
 			pos.x = floor(pos.x);
-		pos.y += (pos.x - ray.origin.x) * tan(ray.ray_angle);
+		pos.y += (pos.x - ray.origin.x) * tan(correct_angle(ray.ray_angle));
 	}
 	return (pos);
 }
@@ -64,17 +64,17 @@ static double	search_walls(t_data *data, t_ray ray, char c)
 		{
 			pos.x += ray.cross_x.x;
 			pos.y += ray.cross_x.y;
-			ray.wall_x.x = pos.x;
-			ray.wall_x.y = pos.y;
 		}
 		if (c == 'y')
 		{
 			pos.x += ray.cross_y.x;
 			pos.y += ray.cross_y.y;
-			ray.wall_y.x = pos.x;
-			ray.wall_y.y = pos.y;
 		}
 	}
+	if (c == 'x')
+		ray.wall_x = pos;
+	else
+		ray.wall_y = pos;
 	return (get_distance(ray, pos));
 }
 
@@ -120,7 +120,6 @@ void	ray_loop(t_data *data)
 	{
 		ray = throw_ray(data, angle);
 		scale_wall(data, ray);
-		angle = correct_angle(angle);
 		angle += data->fov_rd / S_WIDTH;
 		angle = correct_angle(angle);
 		data->rays++;
