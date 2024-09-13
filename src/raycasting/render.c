@@ -6,7 +6,7 @@
 /*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:40:53 by escastel          #+#    #+#             */
-/*   Updated: 2024/09/13 16:07:04 by escastel         ###   ########.fr       */
+/*   Updated: 2024/09/13 17:29:12 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ static void	draw_wall(t_data *data, t_ray ray, double top, double bot)
 
 	tx = get_wall(data, ray.wall_o);
 	f = (double)tx->height / data->w_height;
-	y = (top - (S_HEIGHT + data->w_height) / 2) * f;
-	if (y < 0)
-		y = 0;
+	y = 0;
+	if (data->w_height > S_HEIGHT)
+		y = (data->w_height - S_HEIGHT) / 2 * f;
 	x = get_x(ray, tx);
 	while (top < bot)
 	{
