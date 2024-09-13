@@ -6,7 +6,7 @@
 /*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 14:37:30 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/09/11 19:41:04 by escastel         ###   ########.fr       */
+/*   Updated: 2024/09/13 16:02:28 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,15 +106,15 @@ void	ray_loop(t_data *data);
 double	get_player_angle(char c);
 double	correct_angle(double angle);
 double	orientation(double angle, char c);
-double	get_distance(t_ray ray, t_coord wall);
-int		collition_walls(t_data *data, t_ray ray, t_coord pos, char c);
+double	get_distance(t_ray *ray, t_coord wall);
+int		collition_walls(t_data *data, t_ray *ray, t_coord pos, char c);
 
 /*--- RENDER ---*/
 
 void			scale_wall(t_data *data, t_ray ray);
 mlx_texture_t	*get_wall(t_data *data, char o);
 double			get_x(t_ray ray, mlx_texture_t *tx);
-int				get_color(mlx_texture_t *tx, int x, int y);
+unsigned long	get_color(mlx_texture_t *tx, int x, int y);
 
 /*--- CUB3D UTILS ---*/
 

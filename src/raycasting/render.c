@@ -6,7 +6,7 @@
 /*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:40:53 by escastel          #+#    #+#             */
-/*   Updated: 2024/09/11 19:55:58 by escastel         ###   ########.fr       */
+/*   Updated: 2024/09/13 16:07:04 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	draw_wall(t_data *data, t_ray ray, double top, double bot)
 	double		x;
 	double		y;
 	double		f;
-	int			color;
+	unsigned long	color;
 	mlx_texture_t	*tx;
 
 	tx = get_wall(data, ray.wall_o);
@@ -64,14 +64,13 @@ void	scale_wall(t_data *data, t_ray ray)
 	double	top;
 	double	bot;
 
-	ray.distance *= cos(correct_angle(ray.ray_angle - ray.p_angle));
-	data->w_height = (1 / ray.distance) * ((S_WIDTH / 2) / tan(data->fov_rd / 2));
+	data->w_height = ((S_WIDTH / 2) / tan(correct_angle(data->fov_rd / 2))) / ray.distance;
 	top = (S_HEIGHT / 2) - (data->w_height / 2);
 	if (top < 0)
 		top = 0;
 	bot = (S_HEIGHT / 2) + (data->w_height / 2);
 	if (bot > S_HEIGHT)
 		bot = S_HEIGHT;
-	draw_wall(data, ray, top, bot);
 	draw_floor_sky(data, top, bot);
+	draw_wall(data, ray, top, bot);
 }

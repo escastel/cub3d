@@ -42,6 +42,7 @@ SRC_BONUS = src_bonus/main_bonus.c\
 		src_bonus/raycasting_bonus/ray_casting_bonus.c\
 		src_bonus/raycasting_bonus/ray_utils_bonus.c\
 		src_bonus/raycasting_bonus/render_bonus.c\
+		src_bonus/raycasting_bonus/utils_wall_bonus.c\
 		src_bonus/game_bonus/game_loop_bonus.c\
 		src_bonus/game_bonus/hook_bonus.c\
 		src_bonus/game_bonus/minimap_bonus.c\

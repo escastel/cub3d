@@ -3,34 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   hook_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 15:44:23 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/09/09 13:29:41 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/09/12 17:56:42 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D_bonus.h"
-
-/*
-static void	clean_wall(t_data *data)
-{
-	int	x;
-	int	y;
-
-	y = 0;
-	while (y < S_WIDTH)
-	{
-		x = 0;
-		while (x < S_WIDTH)
-		{
-			mlx_put_pixel(imagen, x, y, TRANSPARENT);
-			mlx_put_pixel(imagen, x, y, TRANSPARENT);
-			x++;
-		}
-		y++;
-	}
-}*/
 
 static void	move_camara_mouse(t_data *data)
 {
