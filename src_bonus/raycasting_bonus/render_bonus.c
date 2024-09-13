@@ -6,34 +6,29 @@
 /*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:40:53 by escastel          #+#    #+#             */
-/*   Updated: 2024/09/11 15:11:13 by escastel         ###   ########.fr       */
+/*   Updated: 2024/09/13 16:17:19 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D_bonus.h"
 
-static int	get_color(t_ray ray)
-{
-	if (ray.wall_o == 'N') // GREEN
-		return (0x007F007F);
-	if (ray.wall_o == 'S') // BLUE
-		return (0x007F007F);
-	if (ray.wall_o == 'W') //PINK
-		return (0x007F007F);
-	if (ray.wall_o == 'E') // RED
-		return (0x007F007F);
-	return (-1);
-}
-
 static void	draw_wall(t_data *data, t_ray ray, double top, double bot)
 {
-	int	color;
+	double		x;
+	double		y;
+	double		f;
+	unsigned long	color;
+	mlx_texture_t	*tx;
 
-	color = get_color(ray);
-	if (color == -1)
-		return ;
+	tx = get_wall(data, ray.wall_o);
+	f = (double)tx->height / data->w_height;
+	y = (top - (S_HEIGHT + data->w_height) / 2) * f;
+	if (y < 0)
+		y = 0;
+	x = get_x(ray, tx);
 	while (top < bot)
 	{
+		color = get_color(tx, (int)x, (int)y);
 		if (!(data->rays < 0 || data->rays >= S_WIDTH
 				|| top < 0 || top >= S_HEIGHT))
 		{
@@ -47,7 +42,6 @@ static void	draw_wall(t_data *data, t_ray ray, double top, double bot)
 
 static void	draw_floor_sky(t_data *data, double top, double bot, int copy)
 {
-	copy = 0;
 	while (copy < top) // SKY
 	{
 		if (!(data->rays < 0 || data->rays >= S_WIDTH
@@ -77,18 +71,16 @@ void	scale_wall(t_data *data, t_ray ray)
 {
 	double	top;
 	double	bot;
-	int		copy;
-	double	w_height;
+	double	copy;
 
-	ray.distance *= cos(correct_angle(ray.ray_angle - ray.p_angle));
-	w_height = (1 / ray.distance) * ((S_WIDTH / 2) / tan(data->fov_rd / 2));
-	top = (S_HEIGHT / 2) - (w_height / 2);
-	copy = 0;
+	data->w_height = ((S_WIDTH / 2) / tan(correct_angle(data->fov_rd / 2))) / ray.distance;
+	top = (S_HEIGHT / 2) - (data->w_height / 2);
 	if (top < 0)
 		top = 0;
-	bot = (S_HEIGHT / 2) + (w_height / 2);
+	bot = (S_HEIGHT / 2) + (data->w_height / 2);
 	if (bot > S_HEIGHT)
 		bot = S_HEIGHT;
-	draw_wall(data, ray, top, bot);
+	copy = 0;
 	draw_floor_sky(data, top, bot, copy);
+	draw_wall(data, ray, top, bot);
 }

@@ -6,7 +6,7 @@
 /*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 15:11:56 by escastel          #+#    #+#             */
-/*   Updated: 2024/09/12 16:50:27 by escastel         ###   ########.fr       */
+/*   Updated: 2024/09/13 16:11:25 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,18 +47,19 @@ double	correct_angle(double angle)
 	return (angle);
 }
 
-double	get_distance(t_ray ray, t_coord wall)
+double	get_distance(t_ray *ray, t_coord wall)
 {
 	t_coord	diff;
 	double	hypotenuse;
 
-	diff.x = wall.x - ray.origin.x;
-	diff.y = wall.y - ray.origin.y;
+	diff.x = wall.x - ray->origin.x;
+	diff.y = wall.y - ray->origin.y;
 	hypotenuse = sqrt(pow(diff.x, 2) + pow(diff.y, 2));
+	hypotenuse *= cos(correct_angle(ray->ray_angle - ray->p_angle));
 	return (hypotenuse);
 }
 
-int	collition_walls(t_data *data, t_ray ray, t_coord pos, char c)
+int	collition_walls(t_data *data, t_ray *ray, t_coord pos, char c)
 {
 	int	x;
 	int	y;
@@ -67,12 +68,12 @@ int	collition_walls(t_data *data, t_ray ray, t_coord pos, char c)
 	y = (int)pos.y;
 	if (c == 'x')
 	{
-		if (sin(ray.ray_angle) < 0)
+		if (sin(ray->ray_angle) < 0)
 			y -= 1;
 	}
 	if (c == 'y')
 	{
-		if (cos(ray.ray_angle) < 0)
+		if (cos(ray->ray_angle) < 0)
 			x -= 1;
 	}
 	if (x < 0 || y < 0 || y >= data->high_map || x > data->width_map)
