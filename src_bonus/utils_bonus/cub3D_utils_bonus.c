@@ -6,7 +6,7 @@
 /*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 11:30:36 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/09/16 13:53:10 by escastel         ###   ########.fr       */
+/*   Updated: 2024/09/16 14:57:54 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	free_split(char **str)
 	}
 	free(str);
 }
-void	free_canvas(t_data *d)
+static void	free_canvas(t_data *d)
 {
 	if (d->wall_n)
 		mlx_delete_texture(d->wall_n);
@@ -76,5 +76,6 @@ void	free_all(t_data *d)
 	if (d->c != NULL)
 		free_split(d->c);
 	free_canvas(d);
-	free(d);
+	if (d != NULL)
+		free(d);
 }
