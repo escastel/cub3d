@@ -6,6 +6,7 @@
 /*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 18:12:27 by ncruz-ga          #+#    #+#             */
+/*   Updated: 2024/09/16 14:20:27 by ncruz-ga         ###   ########.fr       */
 /*   Updated: 2024/09/16 13:29:06 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -33,19 +34,18 @@ static int	get_texture(t_data *data, char *line, int i, char **split)
 	split = ft_split(line, '\n');
 	while (split[++i] != NULL)
 		save_texture(data, split, i);
+	free_split(split);
 	if ((data->no == NULL || data->so == NULL || data->we == NULL \
 		|| data->ea == NULL || data->f == NULL || data->c == NULL)
 		|| (data->no[1] == NULL || data->so[1] == NULL || data->we[1] == NULL \
 		|| data->ea[1] == NULL || data->f[1] == NULL || data->c[1] == NULL))
 	{
-		free_split(split);
 		free(line);
 		return (print_error(data, "Can't get textures"));
 	}
 	if (check_colors(data->c[1], 0) == 1 || check_colors(data->f[1], 0) == 1
 		|| check_digit(data->c[1]) == 1 || check_digit(data->f[1]) == 1)
 	{
-		free_split(split);
 		free(line);
 		return (print_error(data, "Incorrect color argument"));
 	}

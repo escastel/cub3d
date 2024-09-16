@@ -3,9 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 11:30:36 by ncruz-ga          #+#    #+#             */
+/*   Updated: 2024/09/16 14:23:30 by ncruz-ga         ###   ########.fr       */
 /*   Updated: 2024/09/16 13:17:09 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -34,14 +35,18 @@ void	free_split(char **str)
 	int	i;
 
 	i = 0;
-	while (str[i] != NULL)
+	if (str)
 	{
-		free(str[i]);
-		i++;
+		while (str[i] != NULL)
+		{
+			free(str[i]);
+			i++;
+		}
+		free(str);
 	}
-	free(str);
 }
-void	free_canvas(t_data *d)
+
+static void	free_canvas(t_data *d)
 {
 	if (d->wall_n)
 		mlx_delete_texture(d->wall_n);
