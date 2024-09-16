@@ -3,10 +3,11 @@
 /*                                                        :::      ::::::::   */
 /*   get_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 18:12:27 by ncruz-ga          #+#    #+#             */
 /*   Updated: 2024/09/16 14:20:27 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/09/16 13:29:06 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +41,17 @@ static int	get_texture(t_data *data, char *line, int i, char **split)
 		|| data->ea[1] == NULL || data->f[1] == NULL || data->c[1] == NULL))
 	{
 		free(line);
-		return (print_error("can't get textures"));
+		return (print_error(data, "Can't get textures"));
 	}
 	if (check_colors(data->c[1], 0) == 1 || check_colors(data->f[1], 0) == 1
 		|| check_digit(data->c[1]) == 1 || check_digit(data->f[1]) == 1)
 	{
 		free(line);
-		return (print_error("incorrect color argument"));
+		return (print_error(data, "Incorrect color argument"));
 	}
-	return (free(line), EXIT_SUCCESS);
+	free_split(split);
+	free(line);
+	return (EXIT_SUCCESS);
 }
 
 static int	read_map(t_data *data, int fd, char *line, char *full_map)
@@ -59,7 +62,7 @@ static int	read_map(t_data *data, int fd, char *line, char *full_map)
 		{
 			if (full_map != NULL)
 				free(full_map);
-			return (free(line), print_error("invalid map"));
+			return (free(line), print_error(data, "Invalid map"));
 		}
 		full_map = ft_strjoin_gnl(full_map, line);
 		if (!full_map)
@@ -72,11 +75,11 @@ static int	read_map(t_data *data, int fd, char *line, char *full_map)
 	{
 		data->map = ft_split(full_map, '\n');
 		if (!data->map)
-			return (print_error("can't save map"));
+			return (print_error(data, "Can't save map"));
 	}
 	free(full_map);
 	if (data->map == NULL)
-		return (print_error("empty map"));
+		return (print_error(data, "Empty map"));
 	return (EXIT_SUCCESS);
 }
 
@@ -96,7 +99,7 @@ static int	read_file(t_data *data, int fd, char **texture, char *line)
 		else if (line[0] != '\n')
 		{
 			free(line);
-			return (print_error("invalid element in texture"));
+			return (print_error(data, "Invalid element in texture"));
 		}
 		free(line);
 		line = get_next_line(fd);
@@ -114,10 +117,10 @@ int	get_map(t_data *data, char *str, char *line)
 	fd = open(str, O_RDONLY);
 	line = get_next_line(fd);
 	if (line == NULL)
-		return (print_error("empty file"));
+		return (print_error(data, "Empty file"));
 	texture = NULL;
 	if (fd == -1)
-		return (print_error("can't open file"));
+		return (print_error(data, "Can't open file"));
 	if (read_file(data, fd, &texture, line) == 1)
 	{
 		free(texture);
@@ -126,11 +129,11 @@ int	get_map(t_data *data, char *str, char *line)
 	if (data->nbr_text != 6)
 	{
 		free(texture);
-		return (print_error("nbr_text incorrect"));
+		return (print_error(data, "nbr_text incorrect"));
 	}
 	if (get_texture(data, texture, -1, NULL) == 1)
 		return (EXIT_FAILURE);
 	if (ft_strrlen(data->c) != 2 || ft_strrlen(data->f) != 2)
-		return (print_error("incorrect color argument"));
+		return (print_error(data, "Incorrect color argument"));
 	return (EXIT_SUCCESS);
 }

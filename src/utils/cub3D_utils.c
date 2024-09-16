@@ -7,14 +7,16 @@
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 11:30:36 by ncruz-ga          #+#    #+#             */
 /*   Updated: 2024/09/16 14:23:30 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/09/16 13:17:09 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
 
-int	print_error(char *str)
+int	print_error(t_data *data, char *str)
 {
 	ft_printf("Error: %s\n", str);
+	free_all(data);
 	return (EXIT_FAILURE);
 }
 
