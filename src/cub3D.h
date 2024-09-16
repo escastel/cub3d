@@ -6,7 +6,7 @@
 /*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 14:37:30 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/09/16 12:50:16 by escastel         ###   ########.fr       */
+/*   Updated: 2024/09/16 13:25:27 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,6 @@ typedef struct s_data
 	mlx_texture_t	*wall_e;
 }			t_data;
 
-/*--- INIT_STRUCT ---*/
-
-void			init_data(t_data *d);
-
 /*--- PARSER ---*/
 
 int				check_arg(char *str);
@@ -118,12 +114,13 @@ unsigned long	get_color(mlx_texture_t *tx, int x, int y);
 
 /*--- CUB3D UTILS ---*/
 
-int				print_error(char *str);
+int				print_error(t_data *data, char *str);
 int				ft_strrlen(char **str);
 
 /*--- FREE PROGRAM ---*/
 
 void			free_split(char **str);
 void			free_all(t_data *d);
+void			free_canvas(t_data *d);
 
 #endif

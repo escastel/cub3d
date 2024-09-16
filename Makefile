@@ -17,7 +17,6 @@ LIB = ar rcs
 LIB_SYS = -lm -Iinclude -lglfw -L "/Users/$(USER)/.brew/opt/glfw/lib/"
 
 SRC =	src/main.c\
-		src/init_struct/init_struct.c\
 		src/utils/cub3D_utils.c\
 		src/parser/get_map.c\
 		src/parser/save_colors.c\
@@ -33,7 +32,6 @@ SRC =	src/main.c\
 		src/game/player.c\
 
 SRC_BONUS = src_bonus/main_bonus.c\
-		src_bonus/init_struct_bonus/init_struct_bonus.c\
 		src_bonus/utils_bonus/cub3D_utils_bonus.c\
 		src_bonus/parser_bonus/get_map_bonus.c\
 		src_bonus/parser_bonus/save_colors_bonus.c\
