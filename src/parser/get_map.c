@@ -3,13 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   get_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 18:12:27 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/09/16 14:20:27 by ncruz-ga         ###   ########.fr       */
-/*   Updated: 2024/09/16 13:29:06 by escastel         ###   ########.fr       */
+/*   Updated: 2024/09/16 14:58:33 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "../cub3D.h"
 
@@ -34,7 +34,6 @@ static int	get_texture(t_data *data, char *line, int i, char **split)
 	split = ft_split(line, '\n');
 	while (split[++i] != NULL)
 		save_texture(data, split, i);
-	free_split(split);
 	if ((data->no == NULL || data->so == NULL || data->we == NULL \
 		|| data->ea == NULL || data->f == NULL || data->c == NULL)
 		|| (data->no[1] == NULL || data->so[1] == NULL || data->we[1] == NULL \
