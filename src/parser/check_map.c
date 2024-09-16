@@ -6,7 +6,7 @@
 /*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 18:06:26 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/09/04 13:20:57 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/09/16 14:21:18 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static int	check_sp(t_data *d)
 
 	i = -1;
 	j = 0;
-	while (d->map[i] && d->map[++i])
+	while (d->map[++i] && d->map[i])
 	{
 		while ((d->map[i][j] == ' '
 			|| (d->map[i][j] >= 9 && d->map[i][j] <= 13)))

@@ -6,7 +6,7 @@
 /*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 18:12:27 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/07/25 12:05:51 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/09/16 14:20:27 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,23 +33,22 @@ static int	get_texture(t_data *data, char *line, int i, char **split)
 	split = ft_split(line, '\n');
 	while (split[++i] != NULL)
 		save_texture(data, split, i);
+	free_split(split);
 	if ((data->no == NULL || data->so == NULL || data->we == NULL \
 		|| data->ea == NULL || data->f == NULL || data->c == NULL)
 		|| (data->no[1] == NULL || data->so[1] == NULL || data->we[1] == NULL \
 		|| data->ea[1] == NULL || data->f[1] == NULL || data->c[1] == NULL))
 	{
-		free_split(split);
 		free(line);
 		return (print_error("can't get textures"));
 	}
 	if (check_colors(data->c[1], 0) == 1 || check_colors(data->f[1], 0) == 1
 		|| check_digit(data->c[1]) == 1 || check_digit(data->f[1]) == 1)
 	{
-		free_split(split);
 		free(line);
 		return (print_error("incorrect color argument"));
 	}
-	return (free_split(split), free(line), EXIT_SUCCESS);
+	return (free(line), EXIT_SUCCESS);
 }
 
 static int	read_map(t_data *data, int fd, char *line, char *full_map)
