@@ -2,7 +2,7 @@ NAME = cub3D
 
 NAME_BONUS = cub3D_bonus
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -g -Wall -Werror -Wextra
 
 MLX = ./MLX42/libmlx42.a
 

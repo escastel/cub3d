@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   get_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 18:12:27 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/09/16 13:29:06 by escastel         ###   ########.fr       */
+/*   Updated: 2024/09/16 14:58:33 by ncruz-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "../cub3D.h"
 
@@ -38,14 +39,12 @@ static int	get_texture(t_data *data, char *line, int i, char **split)
 		|| (data->no[1] == NULL || data->so[1] == NULL || data->we[1] == NULL \
 		|| data->ea[1] == NULL || data->f[1] == NULL || data->c[1] == NULL))
 	{
-		free_split(split);
 		free(line);
 		return (print_error(data, "Can't get textures"));
 	}
 	if (check_colors(data->c[1], 0) == 1 || check_colors(data->f[1], 0) == 1
 		|| check_digit(data->c[1]) == 1 || check_digit(data->f[1]) == 1)
 	{
-		free_split(split);
 		free(line);
 		return (print_error(data, "Incorrect color argument"));
 	}
