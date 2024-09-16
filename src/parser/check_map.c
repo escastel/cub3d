@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 18:06:26 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/09/04 13:20:57 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/09/16 13:51:52 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ static int	check_walls(t_data *data, int i, int j)
 {
 	if (((i == 0 || i == data->high_map) || (j == 0 || j == data->width_map))
 		&& data->map[i][j] != '1' && data->map[i][j] != ' ')
-		return (print_error("unclosed map"));
+		return (print_error(data, "Unclosed map"));
 	else if (i != 0 && i != data->high_map && ((data->map[i][j] == '0' \
 		|| data->map[i][j] == 'N' || data->map[i][j] == 'W'
 		|| data->map[i][j] == 'S' || data->map[i][j] == 'E')
 		&& (data->map[i + 1][j] == ' ' || data->map[i - 1][j] == ' '
 		|| data->map[i][j + 1] == ' ' || data->map[i][j - 1] == ' ')))
-		return (print_error("space inside the map"));
+		return (print_error(data, "Space inside the map"));
 	if (data->map[i][j] == 'N' || data->map[i][j] == 'S'
 			|| data->map[i][j] == 'W' || data->map[i][j] == 'E')
 	{
@@ -47,7 +47,7 @@ static int	check_elements(t_data *d)
 				&& d->map[i][j] != 'N' && d->map[i][j] != 'S'
 				&& d->map[i][j] != 'W' && d->map[i][j] != 'E'
 				&& d->map[i][j] != ' ')
-				return (print_error("incorrect element"));
+				return (print_error(d, "Incorrect element"));
 			if (d->map[i][j] == 'N' || d->map[i][j] == 'S'
 				|| d->map[i][j] == 'W' || d->map[i][j] == 'E')
 			{
@@ -57,7 +57,7 @@ static int	check_elements(t_data *d)
 		}
 	}
 	if (d->nbr_player != 1)
-		return (print_error("multiple player"));
+		return (print_error(d, "Multiple player"));
 	return (EXIT_SUCCESS);
 }
 
@@ -75,7 +75,7 @@ static int	check_sp(t_data *d)
 			j++;
 		if (i == 0 && (d->map[i][j] != '1'
 			|| d->map[i][ft_strlen(d->map[i]) - 1] != '1'))
-			return (print_error("line with only spaces"));
+			return (print_error(d, "Empty map"));
 	}
 	return (EXIT_SUCCESS);
 }
@@ -113,7 +113,7 @@ int	check_map(t_data *data)
 	int	j;
 
 	if (data->map == NULL)
-		return (print_error("empty map"));
+		return (print_error(data, "Empty map"));
 	if (check_sp(data) == 1 || check_elements(data) == 1)
 		return (EXIT_FAILURE);
 	fix_map(data, -1, 0);

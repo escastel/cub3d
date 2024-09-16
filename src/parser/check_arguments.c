@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_arguments.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncruz-ga <ncruz-ga@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 15:35:03 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/05/16 17:47:19 by ncruz-ga         ###   ########.fr       */
+/*   Updated: 2024/09/16 13:49:52 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	check_close_map(t_data *data, int i)
 		else if (data->map[i][j] == '0' || data->map[i][j] == 'W'
 			|| data->map[i][j] == 'N' || data->map[i][j] == 'E'
 			|| data->map[i][j] == 'S')
-			return (print_error("unclosed map"));
+			return (print_error(data, "Unclosed map"));
 		j++;
 	}
 	j = ft_strlen(data->map[i]) - 1;
@@ -35,7 +35,7 @@ int	check_close_map(t_data *data, int i)
 		else if (data->map[i][j] == '0' || data->map[i][j] == 'W'
 			|| data->map[i][j] == 'N' || data->map[i][j] == 'E'
 			|| data->map[i][j] == 'S')
-			return (print_error("unclosed map"));
+			return (print_error(data, "Unclosed map"));
 		j--;
 	}
 	return (EXIT_SUCCESS);
@@ -87,7 +87,10 @@ int	check_colors(char *str, int flag)
 	while (split[++i] != NULL)
 	{
 		if (ft_atoi(split[i]) > 255 || ft_atoi(split[i]) < 0)
-			return (free_split(split), EXIT_FAILURE);
+		{
+			free_split(split);
+			return (EXIT_FAILURE);
+		}
 	}
 	free_split(split);
 	return (EXIT_SUCCESS);
@@ -102,5 +105,8 @@ int	check_arg(char *str)
 		&& str[i - 4] == '.')
 		return (EXIT_SUCCESS);
 	else
+	{
+		ft_printf("Error: Incorrect extension: .cub\n");
 		return (EXIT_FAILURE);
+	}
 }

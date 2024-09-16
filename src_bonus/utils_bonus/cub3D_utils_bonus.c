@@ -6,15 +6,16 @@
 /*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 11:30:36 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/09/16 13:11:49 by escastel         ###   ########.fr       */
+/*   Updated: 2024/09/16 13:53:10 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D_bonus.h"
 
-int	print_error(char *str)
+int	print_error(t_data *data, char *str)
 {
 	ft_printf("Error: %s\n", str);
+	free_all(data);
 	return (EXIT_FAILURE);
 }
 
@@ -52,6 +53,10 @@ void	free_canvas(t_data *d)
 		mlx_delete_texture(d->wall_e);
 	if (d->raycasting)
 		mlx_delete_image(d->mlx, d->raycasting);
+	if (d->player)
+		mlx_delete_image(d->mlx, d->player);
+	if (d->minimap)
+		mlx_delete_image(d->mlx, d->minimap);	
 }
 
 void	free_all(t_data *d)

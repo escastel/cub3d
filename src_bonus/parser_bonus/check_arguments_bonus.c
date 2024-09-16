@@ -6,7 +6,7 @@
 /*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 15:35:03 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/09/06 16:00:19 by escastel         ###   ########.fr       */
+/*   Updated: 2024/09/16 13:49:48 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	check_close_map(t_data *data, int i)
 		else if (data->map[i][j] == '0' || data->map[i][j] == 'W'
 			|| data->map[i][j] == 'N' || data->map[i][j] == 'E'
 			|| data->map[i][j] == 'S')
-			return (print_error("unclosed map"));
+			return (print_error(data, "Unclosed map"));
 		j++;
 	}
 	j = ft_strlen(data->map[i]) - 1;
@@ -35,7 +35,7 @@ int	check_close_map(t_data *data, int i)
 		else if (data->map[i][j] == '0' || data->map[i][j] == 'W'
 			|| data->map[i][j] == 'N' || data->map[i][j] == 'E'
 			|| data->map[i][j] == 'S')
-			return (print_error("unclosed map"));
+			return (print_error(data, "Unclosed map"));
 		j--;
 	}
 	return (EXIT_SUCCESS);
@@ -102,5 +102,8 @@ int	check_arg(char *str)
 		&& str[i - 4] == '.')
 		return (EXIT_SUCCESS);
 	else
+	{
+		ft_printf("Error: Incorrect extension: .cub\n");
 		return (EXIT_FAILURE);
+	}
 }
