@@ -6,7 +6,7 @@
 /*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 15:44:23 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/09/13 17:10:54 by escastel         ###   ########.fr       */
+/*   Updated: 2024/09/16 12:53:04 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	hook(void *param)
 	t_data	*data;
 
 	data = param;
- 	clean_wall(data);
+	clean_wall(data);
 	ray_loop(data);
 	if (mlx_is_key_down(data->mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(data->mlx);

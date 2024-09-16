@@ -6,7 +6,7 @@
 /*   By: escastel <escastel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 14:37:30 by ncruz-ga          #+#    #+#             */
-/*   Updated: 2024/09/13 16:13:26 by escastel         ###   ########.fr       */
+/*   Updated: 2024/09/16 12:52:43 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,32 +51,32 @@ typedef struct s_ray
 
 typedef struct s_data
 {
-	char		**map;
-	char		**no;
-	char		**so;
-	char		**we;
-	char		**ea;
-	char		**f;
-	char		**c;
-	char		orientation;
-	int			floor;
-	int			sky;
-	int			rays;
-	int			m_x;
-	int			m_y;
-	int			nbr_text;
-	int			nbr_player;
-	int			width_map;
-	int			high_map;
-	double		w_height;
-	double		fov_rd;	// FOV EN RADIANES
-	double		pos_x;	// START POSITION
-	double		pos_y;
-	double		p_angle;
-	mlx_t		*mlx;
-	mlx_image_t	*minimap;
-	mlx_image_t	*player;
-	mlx_image_t	*raycasting;
+	char			**map;
+	char			**no;
+	char			**so;
+	char			**we;
+	char			**ea;
+	char			**f;
+	char			**c;
+	char			orientation;
+	int				floor;
+	int				sky;
+	int				rays;
+	int				m_x;
+	int				m_y;
+	int				nbr_text;
+	int				nbr_player;
+	int				width_map;
+	int				high_map;
+	double			w_height;
+	double			fov_rd;
+	double			pos_x;
+	double			pos_y;
+	double			p_angle;
+	mlx_t			*mlx;
+	mlx_image_t		*minimap;
+	mlx_image_t		*player;
+	mlx_image_t		*raycasting;
 	mlx_texture_t	*wall_n;
 	mlx_texture_t	*wall_s;
 	mlx_texture_t	*wall_w;
@@ -85,36 +85,36 @@ typedef struct s_data
 
 /*--- INIT_STRUCT ---*/
 
-void	init_data(t_data *d);
+void			init_data(t_data *d);
 
 /*--- PARSER ---*/
 
-int		save_colors(t_data	*data);
-int		check_arg(char *str);
-int		check_colors(char *str, int flag);
-int		check_digit(char *str);
-int		check_map(t_data *data);
-int		check_close_map(t_data *data, int i);
+int				save_colors(t_data	*data);
+int				check_arg(char *str);
+int				check_colors(char *str, int flag);
+int				check_digit(char *str);
+int				check_map(t_data *data);
+int				check_close_map(t_data *data, int i);
 
 /*--- READ MAP ---*/
 
-int		get_map(t_data *data, char *str, char *line);
+int				get_map(t_data *data, char *str, char *line);
 
 /*--- GAME ---*/
-int		init_game(t_data *data);
-void	draw_map(t_data *data);
-void	draw_border(t_data *data);
-void	hook(void *param);
-void	player_move(t_data *data);
+int				init_game(t_data *data);
+void			draw_map(t_data *data);
+void			draw_border(t_data *data);
+void			hook(void *param);
+void			player_move(t_data *data);
 
 /*--- RAYCASTING ---*/
 
-void	ray_loop(t_data *data);
-double	get_player_angle(char c);
-double	correct_angle(double angle);
-double	orientation(double angle, char c);
-double	get_distance(t_ray *ray, t_coord wall);
-int		collition_walls(t_data *data, t_ray *ray, t_coord pos, char c);
+void			ray_loop(t_data *data);
+double			get_player_angle(char c);
+double			correct_angle(double angle);
+double			orientation(double angle, char c);
+double			get_distance(t_ray *ray, t_coord wall);
+int				collition_walls(t_data *data, t_ray *ray, t_coord pos, char c);
 
 /*--- RENDER ---*/
 
@@ -125,12 +125,12 @@ unsigned long	get_color(mlx_texture_t *tx, int x, int y);
 
 /*--- CUB3D UTILS ---*/
 
-int		print_error(char *str);
-int		ft_strrlen(char **str);
+int				print_error(char *str);
+int				ft_strrlen(char **str);
 
 /*--- FREE PROGRAM ---*/
 
-void	free_split(char **str);
-void	free_all(t_data *d);
+void			free_split(char **str);
+void			free_all(t_data *d);
 
 #endif
